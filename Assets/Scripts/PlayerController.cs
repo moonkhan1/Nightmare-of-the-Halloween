@@ -24,7 +24,7 @@ public class PlayerController : MonoBehaviour
     [SerializeField] Color RightArmColor;
     GameObject _Enemy;
 
-    [SerializeField] float _moveSpeed = 6f;
+    [SerializeField] float _moveSpeed;
     [SerializeField] float _turnSpeed;
     [SerializeField] Transform _cameraTransform;
     [SerializeField] GameObject Bullet;
@@ -42,6 +42,8 @@ public class PlayerController : MonoBehaviour
 
     bool _isTriggered;
     bool waitTime = true;
+    public int _damage { get;private set; }
+    [SerializeField] Data _data;
 
     // public Controller _controller;
 
@@ -49,6 +51,7 @@ public class PlayerController : MonoBehaviour
     
 
     private void Awake() {
+        _damage =5;
         _input = GetComponent<InputRead>();
         _mover = new Mover(this);
         _xRotation = new XRotation(this);
@@ -60,6 +63,8 @@ public class PlayerController : MonoBehaviour
 
     void Start()
     {
+        SetEnemyStats();
+        Debug.Log(_damage);
         Body = gameObject;
         ColorizeBodyPart(Body, BodyColor);
         Eye = transform.GetChild(0).gameObject;
@@ -89,6 +94,11 @@ public class PlayerController : MonoBehaviour
         // }
 
         // transform.LookAt(_Enemy.transform.position);
+
+        // if (_playerHealth == _playerHealth -= )
+        // {
+            
+        // }
         
 
         if (_input.Shoot)
@@ -99,10 +109,10 @@ public class PlayerController : MonoBehaviour
         _yRotation.RotationAction(_input.Rotation.y, _turnSpeed);
         _xRotation.RotationAction(_input.Rotation.x, _turnSpeed);
 
-        if (emptyObject.enemyList.Count == 0)
-        {
-            Destroy(this);
-        }
+        // if (emptyObject.enemyList.Count == 0)
+        // {
+        //     Destroy(this);
+        // }
     }
 
     void FixedUpdate() 
@@ -129,12 +139,12 @@ public class PlayerController : MonoBehaviour
         go.GetComponent<Renderer>().material.color = c;
     }
 
-    void OnCollisionEnter(Collision collision) {
-        if (collision.gameObject.CompareTag("Enemy"))
-        {
-            Destroy(gameObject);
-        }
-    }
+    // void OnCollisionEnter(Collision collision) {
+    //     if (collision.gameObject.CompareTag("Enemy"))
+    //     {
+    //         Destroy(gameObject);
+    //     }
+    // }
 
        IEnumerator SpawnAndKillBullet()
     {
@@ -152,7 +162,12 @@ public class PlayerController : MonoBehaviour
         waitTime=true;
     }
 
-
+void SetEnemyStats()
+    {
+        GetComponent<Health>().SetHealth(_data.HP,_data.HP);
+        _damage = _data.damage;
+        _moveSpeed = _data.speed;
+    }
 
 }
 }

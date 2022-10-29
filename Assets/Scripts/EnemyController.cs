@@ -23,10 +23,25 @@ public class EnemyController : MonoBehaviour
 
     EmptyObject emptyObject;
 
+     GameObject Player;
+    int _enemyDamage = 2;
+    float _enemySpeed = 5f;
 
-    // Start is called before the first frame update
+    [SerializeField] Data _data;
+    PlayerController _player;
+    int _playerDamage;
+
+
+    private void Awake() {
+
+    }
     void Start()
     {
+        _Player = GameObject.FindGameObjectWithTag("Player");   
+        _playerDamage = _Player.GetComponent<PlayerController>()._damage;     
+        
+        SetEnemyStats();
+        
         Body = gameObject;
         ColorizeBodyPart(Body, BodyColor);
         Eye = transform.GetChild(0).gameObject;
@@ -35,13 +50,9 @@ public class EnemyController : MonoBehaviour
         ColorizeBodyPart(LeftArm, LeftAramColor);
         RightArm = transform.GetChild(2).gameObject;
         ColorizeBodyPart(RightArm, RightArmColor);
-        _Player = GameObject.FindGameObjectWithTag("Player");
     }
 
-    void ColorizeBodyPart(GameObject go, Color c)
-    {
-        go.GetComponent<Renderer>().material.color = c;
-    }
+    
     void Update()
     {
         transform.LookAt(_Player.transform.position);
@@ -61,8 +72,31 @@ public class EnemyController : MonoBehaviour
     void OnCollisionEnter(Collision collision) {
         if (collision.gameObject.CompareTag("Bullet"))
         {
-            Destroy(gameObject);
+            
+            this.GetComponent<Health>().Damage(_playerDamage);
+            Debug.Log("collision and damage");
+            
+            Debug.Log(_playerDamage);
         }
+
+        if (collision.gameObject.CompareTag("Player"))
+        {
+            if (collision.gameObject.GetComponent<Health>() != null)
+            {
+                collision.gameObject.GetComponent<Health>().Damage(_enemyDamage);
+            }
+        }
+    }
+
+    void SetEnemyStats()
+    {
+        GetComponent<Health>().SetHealth(_data.HP,_data.HP);
+        _enemyDamage = _data.damage;
+        _enemySpeed = _data.speed;
+    }
+    void ColorizeBodyPart(GameObject go, Color c)
+    {
+        go.GetComponent<Renderer>().material.color = c;
     }
 
 
