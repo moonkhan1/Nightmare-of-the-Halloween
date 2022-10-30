@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using Project.Datas;
+using Project.Managers;
 namespace Project.Controller{
 public class EnemyController : MonoBehaviour
 {
@@ -31,13 +32,13 @@ public class EnemyController : MonoBehaviour
     PlayerController _player;
     int _playerDamage;
 
-
+    GameObject _enemyManager;
     private void Awake() {
-
     }
     void Start()
     {
         _Player = GameObject.FindGameObjectWithTag("Player");   
+        _enemyManager = GameObject.FindGameObjectWithTag("EnemyManager");  
         _playerDamage = _Player.GetComponent<PlayerController>()._damage;     
         
         SetEnemyStats();
@@ -99,6 +100,9 @@ public class EnemyController : MonoBehaviour
         go.GetComponent<Renderer>().material.color = c;
     }
 
+    private void OnDestroy() {
+        _enemyManager.GetComponent<EnemyManager>().RemoveEnemy(this);
+    }
 
 }
 }
