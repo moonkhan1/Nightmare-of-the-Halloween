@@ -10,10 +10,13 @@ namespace Project.Managers
     {
         [SerializeField] List<EnemyController> _enemies;
         [SerializeField] int _maxEnemyCount = 2;
+        GameObject _gameManager;
         public bool CanSpawn => _maxEnemyCount > _enemies.Count;
+        public bool IsAllDead => _enemies.Count <= 0;
 
         void Awake()
         {
+            _gameManager = GameObject.FindGameObjectWithTag("GameManager");
             _enemies = new List<EnemyController>();
         }
         public void AddEnemy(EnemyController enemyController)
@@ -25,6 +28,7 @@ namespace Project.Managers
         public void RemoveEnemy(EnemyController enemyController)
         {
             _enemies.Remove(enemyController);
+            _gameManager.GetComponent<GameManager>().DecreaseCount();
         }
 
     }

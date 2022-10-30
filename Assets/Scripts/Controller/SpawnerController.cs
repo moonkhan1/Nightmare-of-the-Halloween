@@ -13,17 +13,19 @@ public class SpawnerController : MonoBehaviour
     [SerializeField] SpawnerData _spawnData;
     [SerializeField]float _maxTime;
     GameObject _enemyManager;
+    GameObject _gameManager;
     float _currentTime = 0f;
 
      void Start() {
         _enemyManager = GameObject.FindGameObjectWithTag("EnemyManager");  
+         _gameManager = GameObject.FindGameObjectWithTag("GameManager");  
         _maxTime = _spawnData.RandomSpawn;
     }
 
      void Update() {
         _currentTime += Time.deltaTime;
 
-        if (_currentTime > _maxTime &&  _enemyManager.GetComponent<EnemyManager>().CanSpawn)
+        if (_currentTime > _maxTime && _enemyManager.GetComponent<EnemyManager>().CanSpawn && !_gameManager.GetComponent<GameManager>().IsWaveFinished)
         {
             Spawn();
         }
