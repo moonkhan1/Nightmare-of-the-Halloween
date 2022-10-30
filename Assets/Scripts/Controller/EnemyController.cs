@@ -1,8 +1,8 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
-namespace CodeAcademyDers4.Scripts{
+using Project.Datas;
+namespace Project.Controller{
 public class EnemyController : MonoBehaviour
 {
     GameObject Body;

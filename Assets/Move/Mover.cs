@@ -2,9 +2,9 @@ using System.Threading;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using CodeAcademyDers4.Scripts;
+using Project.Controller;
 
-namespace CodeAcademyDers4.Move
+namespace Project.Move
 {
 public class Mover : MonoBehaviour
 {

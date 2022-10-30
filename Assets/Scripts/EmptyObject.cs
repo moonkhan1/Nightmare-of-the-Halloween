@@ -1,10 +1,9 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
-namespace CodeAcademyDers4.Scripts
+using Project.Controller;
+namespace Project
 {
-    
 
 public class EmptyObject : MonoBehaviour
 {

@@ -1,12 +1,12 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using CodeAcademyDers4.Move;
-using CodeAcademyDers4.Inputs;
+using Project.Move;
+using Project.Inputs;
 using UnityEngine.InputSystem;
+using Project.Datas;
 
-
-namespace CodeAcademyDers4.Scripts
+namespace Project.Controller
 {
 
 public class PlayerController : MonoBehaviour

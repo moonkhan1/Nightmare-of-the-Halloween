@@ -2,10 +2,10 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
-using CodeAcademyDers4.Move;
-using CodeAcademyDers4.Scripts;
+using Project.Move;
+using Project.Controller;
 
-namespace CodeAcademyDers4.Inputs
+namespace Project.Inputs
 {
 public class InputRead : MonoBehaviour
 {
