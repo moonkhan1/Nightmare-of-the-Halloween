@@ -63,8 +63,8 @@ public class EnemyController : MonoBehaviour
 
         //Debug.Log(Vector3.Distance(transform.position,_Player.transform.position));
 
-        if (Vector3.Distance(transform.position, _Player.transform.position) <= 3)
-            return;
+        // if (Vector3.Distance(transform.position, _Player.transform.position) <= 3)
+            // return;
 
         transform.position += transform.forward * Speed * Time.deltaTime;
 
@@ -80,6 +80,10 @@ public class EnemyController : MonoBehaviour
             Debug.Log(_playerDamage);
         }
 
+        
+    }
+
+     void OnCollisionStay(Collision collision) {
         if (collision.gameObject.CompareTag("Player"))
         {
             if (collision.gameObject.GetComponent<Health>() != null)
