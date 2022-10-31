@@ -6,18 +6,7 @@ using Project.Managers;
 namespace Project.Controller{
 public class EnemyController : MonoBehaviour
 {
-    GameObject Body;
-    [SerializeField] Color BodyColor;
-
-    GameObject Eye;
-    [SerializeField] Color EyeColor;
-
-    GameObject LeftArm;
-    [SerializeField] Color LeftAramColor;
-
-    GameObject RightArm;
-    [SerializeField] Color RightArmColor;
-
+   
     GameObject _Player;
     [Range(0, 20)]
     [SerializeField] float Speed = 5f;
@@ -43,14 +32,7 @@ public class EnemyController : MonoBehaviour
         
         SetEnemyStats();
         
-        Body = gameObject;
-        ColorizeBodyPart(Body, BodyColor);
-        Eye = transform.GetChild(0).gameObject;
-        ColorizeBodyPart(Eye, EyeColor);
-        LeftArm = transform.GetChild(1).gameObject;
-        ColorizeBodyPart(LeftArm, LeftAramColor);
-        RightArm = transform.GetChild(2).gameObject;
-        ColorizeBodyPart(RightArm, RightArmColor);
+        
     }
 
     
@@ -99,10 +81,7 @@ public class EnemyController : MonoBehaviour
         _enemyDamage = _data.damage;
         _enemySpeed = _data.speed;
     }
-    void ColorizeBodyPart(GameObject go, Color c)
-    {
-        go.GetComponent<Renderer>().material.color = c;
-    }
+ 
 
     private void OnDestroy() {
         _enemyManager.GetComponent<EnemyManager>().RemoveEnemy(this);
