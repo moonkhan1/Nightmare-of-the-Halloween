@@ -3,6 +3,9 @@ using System.Collections.Generic;
 using UnityEngine;
 using Project.Datas;
 using Project.Managers;
+using Project.Attacks;
+
+
 namespace Project.Controller{
 public class EnemyController : MonoBehaviour
 {
@@ -20,24 +23,33 @@ public class EnemyController : MonoBehaviour
     [SerializeField] Data _data;
     PlayerController _player;
     int _playerDamage;
-
     GameObject _enemyManager;
+    Animator _anim;
+
+    MeleeAttack _meleeAttack;
+
+ 
     private void Awake() {
     }
     void Start()
     {
         _Player = GameObject.FindGameObjectWithTag("Player");   
         _enemyManager = GameObject.FindGameObjectWithTag("EnemyManager");  
-        _playerDamage = _Player.GetComponent<PlayerController>()._damage;     
+        _playerDamage = _Player.GetComponent<PlayerController>()._damage;
+        _anim = GetComponent<Animator>();     
+        _meleeAttack = GetComponentInChildren<MeleeAttack>();
         
         SetEnemyStats();
         
         
     }
 
+
     
     void Update()
     {
+        
+        
         transform.LookAt(_Player.transform.position);
 
 
@@ -45,10 +57,19 @@ public class EnemyController : MonoBehaviour
 
         //Debug.Log(Vector3.Distance(transform.position,_Player.transform.position));
 
-        // if (Vector3.Distance(transform.position, _Player.transform.position) <= 3)
-            // return;
+        if (Vector3.Distance(transform.position, _Player.transform.position) <= 1)
+        {
+            _anim.SetBool("IsAttacking", true);
+            return;
+        }
+        else
+        {
+            
+        // transform.position += transform.forward * Speed * Time.deltaTime;
+        transform.position = Vector3.MoveTowards(transform.position, _Player.transform.position, Speed * Time.deltaTime);
+        _anim.SetBool("IsAttacking", false);
+        }
 
-        transform.position += transform.forward * Speed * Time.deltaTime;
 
     }
 
@@ -65,15 +86,20 @@ public class EnemyController : MonoBehaviour
         
     }
 
-     void OnCollisionStay(Collision collision) {
-        if (collision.gameObject.CompareTag("Player"))
-        {
-            if (collision.gameObject.GetComponent<Health>() != null)
-            {
-                collision.gameObject.GetComponent<Health>().Damage(_enemyDamage);
-            }
-        }
-    }
+    //  void OnCollisionStay(Collision collision) {
+    //     if (collision.gameObject.CompareTag("Player"))
+    //     {
+    //         if (collision.gameObject.GetComponent<Health>() != null)
+    //         {
+    //             if (Time.time >= nextAttack )
+    //             {
+                    
+    //             collision.gameObject.GetComponent<Health>().Damage(_enemyDamage);
+    //             nextAttack = Time.time + AttackTime/AttackRate;
+    //             }
+    //         }
+    //     }
+    // }
 
     void SetEnemyStats()
     {

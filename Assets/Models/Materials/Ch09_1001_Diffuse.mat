@@ -12,6 +12,9 @@ Material:
   m_ValidKeywords:
   - TCP2_REFLECTIONS_FRESNEL
   - TCP2_RIM_LIGHTING_LIGHTMASK
+  - TCP2_SPECULAR
+  - TCP2_SPECULAR_STYLIZED
+  - _NORMALMAP
   m_InvalidKeywords:
   - TCP2_UV_NORMALS_FULL
   m_LightmapFlags: 4
@@ -28,7 +31,7 @@ Material:
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _BumpMap:
-        m_Texture: {fileID: 0}
+        m_Texture: {fileID: 2800000, guid: 31613e46c7380294493efe16b8290013, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _EmissionMap:
@@ -60,7 +63,7 @@ Material:
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _SpecGlossMap:
-        m_Texture: {fileID: 0}
+        m_Texture: {fileID: 2800000, guid: fe85c9945e5c4a2499c446a9bef36101, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     m_Ints: []
@@ -102,11 +105,11 @@ Material:
     - _RimMax: 1
     - _RimMin: 0.5
     - _SingleIndirectColor: 0
-    - _SpecularMapType: 0
+    - _SpecularMapType: 5
     - _SpecularRoughness: 0.5
-    - _SpecularToonSize: 0.25
-    - _SpecularToonSmoothness: 0.05
-    - _SpecularType: 0
+    - _SpecularToonSize: 0.149
+    - _SpecularToonSmoothness: 1
+    - _SpecularType: 1
     - _SrcBlend: 1
     - _UseAlphaTest: 0
     - _UseEmission: 0
@@ -114,14 +117,14 @@ Material:
     - _UseMatCap: 0
     - _UseMatCapMask: 0
     - _UseMobileMode: 0
-    - _UseNormalMap: 0
+    - _UseNormalMap: 1
     - _UseOcclusion: 0
     - _UseOutline: 0
     - _UseReflections: 0
     - _UseRim: 0
     - _UseRimLightMask: 1
     - _UseShadowTexture: 0
-    - _UseSpecular: 0
+    - _UseSpecular: 1
     - _ZWrite: 1
     m_Colors:
     - _BaseColor: {r: 1, g: 1, b: 1, a: 1}
