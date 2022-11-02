@@ -12,9 +12,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5cbb1278474b5ec4d8030a6d276f5240, type: 3}
   m_Name: AttackData
   m_EditorClassIdentifier: Assembly-CSharp:Project.Datas:Attack
-  _damage: 10
+  _damage: 3
   _floatValue: 1
   _layerMask:
     serializedVersion: 2
     m_Bits: 2147483647
-  _attackMaxDelay: 0.75
+  _attackMaxDelay: 1

@@ -16,8 +16,8 @@ public class EnemyController : MonoBehaviour
 
     EmptyObject emptyObject;
 
-     GameObject Player;
-    int _enemyDamage = 2;
+    //  GameObject PlayerEye;
+    public int _enemyDamage = 2;
     float _enemySpeed = 5f;
 
     [SerializeField] Data _data;
@@ -27,8 +27,6 @@ public class EnemyController : MonoBehaviour
     Animator _anim;
 
     MeleeAttack _meleeAttack;
-
- 
     private void Awake() {
     }
     void Start()
@@ -47,9 +45,8 @@ public class EnemyController : MonoBehaviour
 
     
     void Update()
-    {
-        
-        
+    { 
+        // _meleeAttack.AttackAction();
         transform.LookAt(_Player.transform.position);
 
 

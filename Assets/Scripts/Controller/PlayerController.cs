@@ -63,7 +63,7 @@ public class PlayerController : MonoBehaviour
 
     void Start()
     {
-        SetEnemyStats();
+        SetPlayerStats();
         Debug.Log(_damage);
         Body = gameObject;
         ColorizeBodyPart(Body, BodyColor);
@@ -162,7 +162,7 @@ public class PlayerController : MonoBehaviour
         waitTime=true;
     }
 
-void SetEnemyStats()
+void SetPlayerStats()
     {
         GetComponent<Health>().SetHealth(_data.HP,_data.HP);
         _damage = _data.damage;

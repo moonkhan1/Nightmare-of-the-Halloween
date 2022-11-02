@@ -9,10 +9,10 @@ namespace Project.Datas
 
 public class AttackData : ScriptableObject
 {
-        [SerializeField] int _damage = 10;
+        [SerializeField] int _damage = 3;
         [SerializeField] float _floatValue = 1f;
         [SerializeField] LayerMask _layerMask;
-        [SerializeField] float _attackMaxDelay = 0.75f;
+        [SerializeField] float _attackMaxDelay = 1f;
 
         public int Damage => _damage;
         public float FloatValue => _floatValue;
