@@ -13,22 +13,22 @@ ModelImporter:
       type: UnityEngine:Texture2D
       assembly: UnityEngine.CoreModule
       name: Ch09_1001_Diffuse
-    second: {fileID: 2800000, guid: b4d578c8c5d8cba4f99fd4a3127434f5, type: 3}
+    second: {fileID: 2800000, guid: 5da8997611f6cd34abda8f5a628cad52, type: 3}
   - first:
       type: UnityEngine:Texture2D
       assembly: UnityEngine.CoreModule
       name: Ch09_1001_Glossiness
-    second: {fileID: 2800000, guid: fd7739ac7c07a1147bdddd7f4bbe78e8, type: 3}
+    second: {fileID: 2800000, guid: 81bd8ffea2e43a94aa5e61aa6e96b299, type: 3}
   - first:
       type: UnityEngine:Texture2D
       assembly: UnityEngine.CoreModule
       name: Ch09_1001_Normal
-    second: {fileID: 2800000, guid: 31613e46c7380294493efe16b8290013, type: 3}
+    second: {fileID: 2800000, guid: 445799a8e46c5084385a9b8e4fdc6e69, type: 3}
   - first:
       type: UnityEngine:Texture2D
       assembly: UnityEngine.CoreModule
       name: Ch09_1001_Specular
-    second: {fileID: 2800000, guid: fe85c9945e5c4a2499c446a9bef36101, type: 3}
+    second: {fileID: 2800000, guid: 6d60b00b4cfc8f6438dff1570b0ddebc, type: 3}
   materials:
     materialImportMode: 2
     materialName: 0
@@ -41,8 +41,7 @@ ModelImporter:
     optimizeGameObjects: 0
     removeConstantScaleCurves: 1
     motionNodeName: 
-    rigImportErrors: "Invalid copied Avatar Rig Configuration:\n\tNo human bone found.
-      Ensure both rig type match\n"
+    rigImportErrors: 
     rigImportWarnings: 
     animationImportErrors: 
     animationImportWarnings: 
