@@ -14,8 +14,11 @@ public class MeleeAttack : MonoBehaviour
 
     [SerializeField] bool _canAttack;
     float _currentTime = 0f;
-
+    string _tag;
+    
  private void Start() {
+    _tag = _attackData.tag;
+    _tag = "Player";
     
  }
  private void Update() {
@@ -40,7 +43,7 @@ public class MeleeAttack : MonoBehaviour
             foreach (Collider collider in colliders)
             {
                 Debug.Log(collider.gameObject.name);
-                if (collider.gameObject.GetComponent<Health>() != null && collider.tag == "Player")
+                if (collider.gameObject.GetComponent<Health>() != null && collider.tag == _tag)
                 {   
                      
                     collider.GetComponent<Health>().Damage(_attackData.Damage);

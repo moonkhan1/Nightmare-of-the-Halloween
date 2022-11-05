@@ -42,6 +42,12 @@ namespace Project.Managers
             
         }
 
+        public void ExitGame()
+    {
+        Debug.Log("Exit scene clicked");
+        Application.Quit();
+    }
+
         public void DecreaseCount()
         {
             if (IsWaveFinished)

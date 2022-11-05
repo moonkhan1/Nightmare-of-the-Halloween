@@ -11,17 +11,17 @@ namespace Project.Controller
 
 public class PlayerController : MonoBehaviour
 {
-    GameObject Body;
-    [SerializeField] Color BodyColor;
+    // GameObject Body;
+    // [SerializeField] Color BodyColor;
 
-    GameObject Eye;
-    [SerializeField] Color EyeColor;
+    // GameObject Eye;
+    // [SerializeField] Color EyeColor;
 
-    GameObject LeftArm;
-    [SerializeField] Color LeftAramColor;
+    // GameObject LeftArm;
+    // [SerializeField] Color LeftAramColor;
 
-    GameObject RightArm;
-    [SerializeField] Color RightArmColor;
+    // GameObject RightArm;
+    // [SerializeField] Color RightArmColor;
     GameObject _Enemy;
 
     [SerializeField] float _moveSpeed;
@@ -64,15 +64,15 @@ public class PlayerController : MonoBehaviour
     void Start()
     {
         SetPlayerStats();
-        Debug.Log(_damage);
-        Body = gameObject;
-        ColorizeBodyPart(Body, BodyColor);
-        Eye = transform.GetChild(0).gameObject;
-        ColorizeBodyPart(Eye, EyeColor);
-        LeftArm = transform.GetChild(1).gameObject;
-        ColorizeBodyPart(LeftArm, LeftAramColor);
-        RightArm = transform.GetChild(2).gameObject;
-        ColorizeBodyPart(RightArm, RightArmColor);
+        // Debug.Log(_damage);
+        // Body = gameObject;
+        // ColorizeBodyPart(Body, BodyColor);
+        // Eye = transform.GetChild(0).gameObject;
+        // ColorizeBodyPart(Eye, EyeColor);
+        // LeftArm = transform.GetChild(1).gameObject;
+        // ColorizeBodyPart(LeftArm, LeftAramColor);
+        // RightArm = transform.GetChild(2).gameObject;
+        // ColorizeBodyPart(RightArm, RightArmColor);
 
 
         _Enemy = GameObject.FindGameObjectWithTag("Enemy");

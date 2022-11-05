@@ -13,6 +13,8 @@ public class AttackData : ScriptableObject
         [SerializeField] float _floatValue = 1f;
         [SerializeField] LayerMask _layerMask;
         [SerializeField] float _attackMaxDelay = 1f;
+        public string tag {get;set;}
+
 
         public int Damage => _damage;
         public float FloatValue => _floatValue;

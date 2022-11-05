@@ -5,9 +5,11 @@ using UnityEngine;
 public class Bullet : MonoBehaviour
 {
     [SerializeField] float Speed;
+    Rigidbody rb;
 
-
-
+private void Start() {
+    rb = GetComponent<Rigidbody>();
+}
     void Update()
     {
         transform.position += transform.forward * Speed * Time.deltaTime;
