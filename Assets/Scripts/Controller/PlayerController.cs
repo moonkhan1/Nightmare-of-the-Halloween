@@ -24,7 +24,7 @@ public class PlayerController : MonoBehaviour
     // [SerializeField] Color RightArmColor;
     GameObject _Enemy;
 
-    [SerializeField] float _moveSpeed;
+    [SerializeField] float _moveSpeed = 5f;
     [SerializeField] float _turnSpeed;
     [SerializeField] Transform _cameraTransform;
     [SerializeField] GameObject Bullet;
@@ -44,6 +44,7 @@ public class PlayerController : MonoBehaviour
     bool waitTime = true;
     public int _damage { get;private set; }
     [SerializeField] Data _data;
+    Animator _anim;
 
     // public Controller _controller;
 
@@ -64,41 +65,16 @@ public class PlayerController : MonoBehaviour
     void Start()
     {
         SetPlayerStats();
-        // Debug.Log(_damage);
-        // Body = gameObject;
-        // ColorizeBodyPart(Body, BodyColor);
-        // Eye = transform.GetChild(0).gameObject;
-        // ColorizeBodyPart(Eye, EyeColor);
-        // LeftArm = transform.GetChild(1).gameObject;
-        // ColorizeBodyPart(LeftArm, LeftAramColor);
-        // RightArm = transform.GetChild(2).gameObject;
-        // ColorizeBodyPart(RightArm, RightArmColor);
-
-
         _Enemy = GameObject.FindGameObjectWithTag("Enemy");
-
-        
+        _anim = GetComponent<Animator>();
+ 
     }
 
    
     // Update is called once per frame
     void Update()
     {
-        //Debug.Log(Vector3.Distance(gameObject.transform.position, _Enemy.transform.position));
-
-
-        // Debug.Log(_input.Direction);
-        // if (Vector3.Distance(gameObject.transform.position,_Enemy.transform.position) <=5)
-        // {
-        //     Debug.Log("Fire");
-        // }
-
-        // transform.LookAt(_Enemy.transform.position);
-
-        // if (_playerHealth == _playerHealth -= )
-        // {
-            
-        // }
+  
         
 
         if (_input.Shoot)
@@ -109,15 +85,20 @@ public class PlayerController : MonoBehaviour
         _yRotation.RotationAction(_input.Rotation.y, _turnSpeed);
         _xRotation.RotationAction(_input.Rotation.x, _turnSpeed);
 
-        // if (emptyObject.enemyList.Count == 0)
-        // {
-        //     Destroy(this);
-        // }
-    }
+        if (Input.GetKeyDown(KeyCode.Q))
+        {
+            _anim.SetTrigger("RifleAttack");
+        }
+        if (Input.GetKeyDown(KeyCode.E))
+        {
+            _anim.SetTrigger("SwordAttack");
+        }
 
-    void FixedUpdate() 
-    {
-        _mover.MovePlayer(_direction, _moveSpeed);
+        
+    }
+    private void FixedUpdate() {
+        
+     _mover.MovePlayer(_direction, _moveSpeed);
 
         if (_isTriggered && waitTime == true)
         {
@@ -128,23 +109,17 @@ public class PlayerController : MonoBehaviour
             
         }
         _isTriggered= false;
+
+
+    }
+    void LateUpdate() {
+        Debug.Log(_direction.magnitude);
+        if (_anim.GetFloat("moveSpeed") == _direction.magnitude) return;
+        
+        else
+            _anim.SetFloat("moveSpeed",  _direction.magnitude, 0.1f, Time.deltaTime);
     }
 
-    // void OnMouseDown() {
-    //     Instantiate(Bullet, FireFrom.position, Quaternion.Euler(0, 0, 0));
-    // }
-
-     void ColorizeBodyPart(GameObject go, Color c)
-    {
-        go.GetComponent<Renderer>().material.color = c;
-    }
-
-    // void OnCollisionEnter(Collision collision) {
-    //     if (collision.gameObject.CompareTag("Enemy"))
-    //     {
-    //         Destroy(gameObject);
-    //     }
-    // }
 
        IEnumerator SpawnAndKillBullet()
     {
