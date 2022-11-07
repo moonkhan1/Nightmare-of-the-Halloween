@@ -45,7 +45,9 @@ public class PlayerController : MonoBehaviour
 
     // bool _isTriggered;
     // bool waitTime = true;
-    public int _damage { get;private set; }
+    public int _swordDamage { get;private set; }
+    public int _rifleDamage { get;private set; }
+
     [SerializeField] Data _data;
 
     [SerializeField] AvatarMask RunAttack;
@@ -66,7 +68,8 @@ public class PlayerController : MonoBehaviour
     
 
     private void Awake() {
-        _damage =5;
+        _swordDamage =5;
+        _rifleDamage = 2;
         _input = GetComponent<InputRead>();
         _mover = new Mover(this);
         _xRotation = new XRotation(this);
@@ -108,11 +111,14 @@ public class PlayerController : MonoBehaviour
         {
             _anim.SetBool("IsRifleIdle", true);
             _anim.SetBool("RifleAttack2", false);
-                if (Input.GetKeyDown(KeyCode.Q))
+                if (_isTriggered && waitTime)
                 {
-                    _rangedAttack.AttackAction("Enemy", _damage);
+                    waitTime = false;
+                    StartCoroutine(Reload(2f));
+                    _rangedAttack.AttackAction("Enemy", _rifleDamage);
                     _anim.SetBool("RifleAttack2", true);
                 }
+                _isTriggered= false;
         }
         else if (_weaponSwitch._weaponIndex == 0)
         {
@@ -121,9 +127,9 @@ public class PlayerController : MonoBehaviour
                 if (_isTriggered && waitTime)
                 {
                     waitTime = false;
-                    StartCoroutine(Reload());
+                    StartCoroutine(Reload(0.5f));
                     _anim.SetBool("SwordAttack2", true);
-                    _meleeAttack.AttackAction("Enemy", _damage);
+                    _meleeAttack.AttackAction("Enemy", _swordDamage);
                     Debug.Log("Hitted");
                 }
                 _isTriggered= false;
@@ -167,10 +173,10 @@ public class PlayerController : MonoBehaviour
     //     Destroy(_bullet);
     // }
 
-    IEnumerator Reload()
+    IEnumerator Reload(float interval)
 
     {
-        yield return new WaitForSeconds(0.5f);
+        yield return new WaitForSeconds(interval);
         waitTime=true;
     }
 
