@@ -17,16 +17,19 @@ public class EnemyController : MonoBehaviour
     EmptyObject emptyObject;
 
     //  GameObject PlayerEye;
-    public int _enemyDamage = 2;
-    float _enemySpeed = 5f;
+    public int _enemyDamage;
+    float _enemySpeed;
 
     [SerializeField] Data _data;
     PlayerController _player;
     int _playerDamage;
     GameObject _enemyManager;
     Animator _anim;
+     MeleeAttack _meleeAttack;
+    [SerializeField] AttackData _attackData;
 
-    MeleeAttack _meleeAttack;
+     [SerializeField] bool _canAttack;
+    float _currentTime = 0f;
     private void Awake() {
     }
     void Start()
@@ -46,7 +49,9 @@ public class EnemyController : MonoBehaviour
     
     void Update()
     { 
-        // _meleeAttack.AttackAction();
+        _currentTime += Time.deltaTime;
+        _canAttack = _currentTime > _attackData.AttackMaxDelay;
+        
         transform.LookAt(_Player.transform.position);
 
 
@@ -57,7 +62,16 @@ public class EnemyController : MonoBehaviour
         if (Vector3.Distance(transform.position, _Player.transform.position) <= 1)
         {
             _anim.SetBool("IsAttacking", true);
-            return;
+            if (!_canAttack) 
+            {
+                return;
+        
+            }
+            else
+            {
+                _meleeAttack.AttackAction("Player", _enemyDamage);
+            }
+            _currentTime = 0f;
         }
         else
         {

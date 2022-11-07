@@ -5,6 +5,9 @@ using Project.Move;
 using Project.Inputs;
 using UnityEngine.InputSystem;
 using Project.Datas;
+using UnityEditor.Animations;
+using Project.Attacks;
+using DG.Tweening;
 
 namespace Project.Controller
 {
@@ -40,11 +43,22 @@ public class PlayerController : MonoBehaviour
     Vector3 _direction;
     Vector2 _rotation;
 
-    bool _isTriggered;
-    bool waitTime = true;
+    // bool _isTriggered;
+    // bool waitTime = true;
     public int _damage { get;private set; }
     [SerializeField] Data _data;
+
+    [SerializeField] AvatarMask RunAttack;
+    [SerializeField] AvatarMask FullAttack;
+    [SerializeField] AnimatorController _animC;
     Animator _anim;
+    WeaponSwtcher _weaponSwitch;
+    MeleeAttack _meleeAttack;
+    [SerializeField]RangeAttacks _rangedAttack;
+
+     bool _isTriggered;
+    bool waitTime = true;
+
 
     // public Controller _controller;
 
@@ -67,6 +81,9 @@ public class PlayerController : MonoBehaviour
         SetPlayerStats();
         _Enemy = GameObject.FindGameObjectWithTag("Enemy");
         _anim = GetComponent<Animator>();
+        _weaponSwitch = GetComponentInChildren<WeaponSwtcher>();
+        _meleeAttack = GetComponentInChildren<MeleeAttack>();
+        // _rangedAttack = GetComponentInChildren<RangeAttacks>();
  
     }
 
@@ -79,19 +96,37 @@ public class PlayerController : MonoBehaviour
 
         if (_input.Shoot)
         {
-            _isTriggered = true;
+             _isTriggered = true;
+
         }
         _direction = _input.Direction;
         _yRotation.RotationAction(_input.Rotation.y, _turnSpeed);
         _xRotation.RotationAction(_input.Rotation.x, _turnSpeed);
 
-        if (Input.GetKeyDown(KeyCode.Q))
+
+        if (_weaponSwitch._weaponIndex == 1)
         {
-            _anim.SetTrigger("RifleAttack");
+            _anim.SetBool("IsRifleIdle", true);
+            _anim.SetBool("RifleAttack2", false);
+                if (Input.GetKeyDown(KeyCode.Q))
+                {
+                    _rangedAttack.AttackAction("Enemy", _damage);
+                    _anim.SetBool("RifleAttack2", true);
+                }
         }
-        if (Input.GetKeyDown(KeyCode.E))
+        else if (_weaponSwitch._weaponIndex == 0)
         {
-            _anim.SetTrigger("SwordAttack");
+            _anim.SetBool("IsRifleIdle", false);
+            _anim.SetBool("SwordAttack2", false);
+                if (_isTriggered && waitTime)
+                {
+                    waitTime = false;
+                    StartCoroutine(Reload());
+                    _anim.SetBool("SwordAttack2", true);
+                    _meleeAttack.AttackAction("Enemy", _damage);
+                    Debug.Log("Hitted");
+                }
+                _isTriggered= false;
         }
 
         
@@ -100,40 +135,42 @@ public class PlayerController : MonoBehaviour
         
      _mover.MovePlayer(_direction, _moveSpeed);
 
-        if (_isTriggered && waitTime == true)
-        {
-            StartCoroutine(SpawnAndKillBullet());
-            waitTime = false;
-            StartCoroutine(Reload());
+        // if (_isTriggered && waitTime)
+        // {
+        //     waitTime = false;
+        //     StartCoroutine(Reload());
 
             
-        }
-        _isTriggered= false;
+        // }
+        // _isTriggered= false;
 
 
     }
     void LateUpdate() {
         Debug.Log(_direction.magnitude);
+            _animC.layers[1].avatarMask = FullAttack;
         if (_anim.GetFloat("moveSpeed") == _direction.magnitude) return;
-        
         else
+        {
+            _animC.layers[1].avatarMask = RunAttack;
             _anim.SetFloat("moveSpeed",  _direction.magnitude, 0.1f, Time.deltaTime);
+        }
     }
 
 
-       IEnumerator SpawnAndKillBullet()
-    {
+    //    IEnumerator SpawnAndKillBullet()
+    // {
         
-        GameObject _bullet = Instantiate(Bullet, FireFrom.position, transform.rotation);
+    //     GameObject _bullet = Instantiate(Bullet, FireFrom.position, transform.rotation);
         
-        yield return new WaitForSeconds(4f);
-        Destroy(_bullet);
-    }
+    //     yield return new WaitForSeconds(4f);
+    //     Destroy(_bullet);
+    // }
 
     IEnumerator Reload()
 
     {
-        yield return new WaitForSeconds(2.5f);
+        yield return new WaitForSeconds(0.5f);
         waitTime=true;
     }
 

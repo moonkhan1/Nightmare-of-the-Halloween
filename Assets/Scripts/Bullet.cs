@@ -4,22 +4,41 @@ using UnityEngine;
 
 public class Bullet : MonoBehaviour
 {
-    [SerializeField] float Speed;
+    [SerializeField] float Speed = 100f;
+    [SerializeField] float _maxLifeTime = 3f;
+     float _currentLifeTime = 0f;
     Rigidbody rb;
 
-private void Start() {
+private void Awake() {
     rb = GetComponent<Rigidbody>();
 }
     void Update()
     {
+          _currentLifeTime += Time.deltaTime;
+          if (_currentLifeTime > _maxLifeTime)
+          {
+            Destroy(this.gameObject);
+          }
         transform.position += transform.forward * Speed * Time.deltaTime;
     }
-    void OnCollisionEnter(Collision collision) {
-        if (collision.gameObject.CompareTag("Enemy"))
+    // void OnCollisionEnter(Collision collision) {
+    //     if (collision.gameObject.CompareTag("Enemy"))
+    //     {
+    //         Destroy(gameObject);
+    //          Debug.Log(other.name);
+    //     }
+    // }
+
+    void OnTriggerEnter(Collider other)
         {
-            Destroy(gameObject);
+            Destroy(this.gameObject);
+           
         }
-    }
+
+    public void SetDirection(Vector3 direction)
+        {
+            rb.velocity = direction * Speed;
+        }
 
     
 

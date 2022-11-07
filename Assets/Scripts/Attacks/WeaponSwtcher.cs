@@ -9,7 +9,7 @@ namespace Project.Attacks
    
 public class WeaponSwtcher : MonoBehaviour
 {
-     [SerializeField] int _weaponIndex = 0;
+     [SerializeField]public int _weaponIndex = 0;
     void Start()
     {
         SwitchWeapon();

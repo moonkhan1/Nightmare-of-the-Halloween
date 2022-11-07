@@ -24,7 +24,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5915188805604447993}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0.00005340576, y: 0.6705548, z: 1.231}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -44,7 +44,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 881c47707c22b0e4abaedc42ec31fa3b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _transformAttackPoint: {fileID: 1768176128336101134}
+  _transformAttackPoint: {fileID: 0}
   _attackData: {fileID: 11400000, guid: 847ff675aaad0ca4282a794815a10bea, type: 2}
-  _canAttack: 0
-  _radius: 0.4
