@@ -69,7 +69,7 @@ public class PlayerController : MonoBehaviour
 
     private void Awake() {
         _swordDamage =5;
-        _rifleDamage = 2;
+        _rifleDamage = 5;
         _input = GetComponent<InputRead>();
         _mover = new Mover(this);
         _xRotation = new XRotation(this);
@@ -114,13 +114,13 @@ public class PlayerController : MonoBehaviour
                 if (_isTriggered && waitTime)
                 {
                     waitTime = false;
-                    StartCoroutine(Reload(2f));
-                    _rangedAttack.AttackAction("Enemy", _rifleDamage);
+                    StartCoroutine(Reload(1f));
                     _anim.SetBool("RifleAttack2", true);
+                    _rangedAttack.AttackAction("Enemy", _rifleDamage);
                 }
                 _isTriggered= false;
         }
-        else if (_weaponSwitch._weaponIndex == 0)
+        if (_weaponSwitch._weaponIndex == 0)
         {
             _anim.SetBool("IsRifleIdle", false);
             _anim.SetBool("SwordAttack2", false);
@@ -183,7 +183,8 @@ public class PlayerController : MonoBehaviour
 void SetPlayerStats()
     {
         GetComponent<Health>().SetHealth(_data.HP,_data.HP);
-        _damage = _data.damage;
+        _rifleDamage = _data.damage;
+        _swordDamage = _data.damage;
         _moveSpeed = _data.speed;
     }
 

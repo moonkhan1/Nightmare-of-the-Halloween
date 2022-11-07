@@ -3677,7 +3677,7 @@ MonoBehaviour:
   RunAttack: {fileID: 31900000, guid: 355c875ffb222d1469ad62e08810b6c0, type: 2}
   FullAttack: {fileID: 31900000, guid: 35ff99e9fc36137489db786ff4d44b57, type: 2}
   _animC: {fileID: 9100000, guid: 05fb22e2abb49e04eb4cb5895401c00e, type: 2}
-  _rangedAttack: {fileID: 4613687609235089996}
+  _rangedAttack: {fileID: 2802684871833818471}
 --- !u!1 &8152152553335573582
 GameObject:
   m_ObjectHideFlags: 0
@@ -3913,25 +3913,9 @@ PrefabInstance:
       propertyPath: m_Name
       value: SciFiGunHeavyWhite
       objectReference: {fileID: 0}
-    - target: {fileID: 138408, guid: a66d64962dad7b441b895147b3616981, type: 3}
-      propertyPath: m_IsActive
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 402888, guid: a66d64962dad7b441b895147b3616981, type: 3}
       propertyPath: m_RootOrder
       value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 402888, guid: a66d64962dad7b441b895147b3616981, type: 3}
-      propertyPath: m_LocalScale.x
-      value: 10.82
-      objectReference: {fileID: 0}
-    - target: {fileID: 402888, guid: a66d64962dad7b441b895147b3616981, type: 3}
-      propertyPath: m_LocalScale.y
-      value: 1.27
-      objectReference: {fileID: 0}
-    - target: {fileID: 402888, guid: a66d64962dad7b441b895147b3616981, type: 3}
-      propertyPath: m_LocalScale.z
-      value: 9.85
       objectReference: {fileID: 0}
     - target: {fileID: 402888, guid: a66d64962dad7b441b895147b3616981, type: 3}
       propertyPath: m_LocalPosition.x
@@ -3973,45 +3957,23 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 90
       objectReference: {fileID: 0}
+    - target: {fileID: 4613687609235089996, guid: a66d64962dad7b441b895147b3616981, type: 3}
+      propertyPath: _cameraTransform
+      value: 
+      objectReference: {fileID: 1324403674307369453}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: a66d64962dad7b441b895147b3616981, type: 3}
---- !u!1 &7413557639731356547 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 138408, guid: a66d64962dad7b441b895147b3616981, type: 3}
+--- !u!114 &2802684871833818471 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 4613687609235089996, guid: a66d64962dad7b441b895147b3616981, type: 3}
   m_PrefabInstance: {fileID: 7413557639731232555}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &4613687609235089996
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7413557639731356547}
+  m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 4e1d5b4bf8e0f274c9c5727c5ba78196, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _cameraTransform: {fileID: 1324403674307369453}
-  _bullet: {fileID: 2484970793486140983, guid: 98d82bf370671264e87e4e7d42cd3918, type: 3}
-  FireFrom: {fileID: 7413557639731616483}
-  _attackData: {fileID: 11400000, guid: 847ff675aaad0ca4282a794815a10bea, type: 2}
---- !u!114 &6149901046731189681
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7413557639731356547}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4e1d5b4bf8e0f274c9c5727c5ba78196, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _cameraTransform: {fileID: 0}
-  _bullet: {fileID: 0}
-  FireFrom: {fileID: 0}
-  _attackData: {fileID: 0}
 --- !u!4 &7413557639731616483 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 402888, guid: a66d64962dad7b441b895147b3616981, type: 3}

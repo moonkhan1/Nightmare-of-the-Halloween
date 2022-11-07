@@ -17,11 +17,11 @@ public class RangeAttacks : MonoBehaviour
 
             if (Physics.Raycast(ray, out RaycastHit hit, _attackData.FloatValue, _attackData.LayerMask))
             {
-                
-                if (hit.collider.GetComponent<Health>() != null && hit.collider.tag == _tag)
+                Debug.Log("Ilk faza");
+                if (hit.collider.TryGetComponent(out Health health) && hit.collider.tag == _tag)
                 {
                     Debug.Log(hit.collider.name);
-                    hit.collider.GetComponent<Health>().Damage(damage);
+                    health.Damage(damage);
                 }
             }
         

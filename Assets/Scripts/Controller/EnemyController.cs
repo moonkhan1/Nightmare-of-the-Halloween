@@ -36,7 +36,7 @@ public class EnemyController : MonoBehaviour
     {
         _Player = GameObject.FindGameObjectWithTag("Player");   
         _enemyManager = GameObject.FindGameObjectWithTag("EnemyManager");  
-        _playerDamage = _Player.GetComponent<PlayerController>()._damage;
+        _playerDamage = _Player.GetComponent<PlayerController>()._rifleDamage;
         _anim = GetComponent<Animator>();     
         _meleeAttack = GetComponentInChildren<MeleeAttack>();
         
@@ -84,18 +84,27 @@ public class EnemyController : MonoBehaviour
 
     }
 
-    void OnCollisionEnter(Collision collision) {
-        if (collision.gameObject.CompareTag("Bullet"))
-        {
+    // void OnTriggerEnter(Collision other) {
+    //     if (other.gameObject.CompareTag("Bullet"))
+    //     {
             
-            this.GetComponent<Health>().Damage(_playerDamage);
+    //         this.GetComponent<Health>().Damage(_playerDamage);
+    //         Debug.Log("collision and damage");
+            
+    //         Debug.Log(_playerDamage);
+    //     }
+    // }
+    private void OnTriggerEnter(Collider other) {
+        if (other.CompareTag("Bullet"))
+        {
+             this.GetComponent<Health>().Damage(_playerDamage);
             Debug.Log("collision and damage");
             
             Debug.Log(_playerDamage);
         }
-
-        
     }
+        
+    // }
 
     //  void OnCollisionStay(Collision collision) {
     //     if (collision.gameObject.CompareTag("Player"))
