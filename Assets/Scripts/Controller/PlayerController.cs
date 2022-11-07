@@ -60,6 +60,7 @@ public class PlayerController : MonoBehaviour
 
      bool _isTriggered;
     bool waitTime = true;
+    public bool IsPlayerDead;
 
 
     // public Controller _controller;
@@ -69,7 +70,7 @@ public class PlayerController : MonoBehaviour
 
     private void Awake() {
         _swordDamage =5;
-        _rifleDamage = 5;
+        _rifleDamage = 2;
         _input = GetComponent<InputRead>();
         _mover = new Mover(this);
         _xRotation = new XRotation(this);
@@ -81,6 +82,7 @@ public class PlayerController : MonoBehaviour
 
     void Start()
     {
+        
         SetPlayerStats();
         _Enemy = GameObject.FindGameObjectWithTag("Enemy");
         _anim = GetComponent<Animator>();
@@ -94,18 +96,25 @@ public class PlayerController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-  
+        IsPlayerDead = GetComponent<Health>().IsDead;
         
-
+        // IsDeadChecker();
         if (_input.Shoot)
         {
              _isTriggered = true;
 
         }
+        if(!IsPlayerDead)
+        {
+            // gameObject.layer = LayerMask.NameToLayer("Base Layer"); 
+            
+             _yRotation.RotationAction(_input.Rotation.y, 0);
+            _xRotation.RotationAction(_input.Rotation.x, 0);
+       
         _direction = _input.Direction;
         _yRotation.RotationAction(_input.Rotation.y, _turnSpeed);
         _xRotation.RotationAction(_input.Rotation.x, _turnSpeed);
-
+    
 
         if (_weaponSwitch._weaponIndex == 1)
         {
@@ -114,7 +123,7 @@ public class PlayerController : MonoBehaviour
                 if (_isTriggered && waitTime)
                 {
                     waitTime = false;
-                    StartCoroutine(Reload(1f));
+                    StartCoroutine(Reload(0.3f));
                     _anim.SetBool("RifleAttack2", true);
                     _rangedAttack.AttackAction("Enemy", _rifleDamage);
                 }
@@ -135,7 +144,10 @@ public class PlayerController : MonoBehaviour
                 _isTriggered= false;
         }
 
-        
+        }
+        else{
+            _anim.SetBool("IsDead", true);
+        }
     }
     private void FixedUpdate() {
         
@@ -187,6 +199,16 @@ void SetPlayerStats()
         _swordDamage = _data.damage;
         _moveSpeed = _data.speed;
     }
+
+    // void IsDeadChecker()
+    // {
+    //     if(GetComponent<Health>().IsDead)
+    //     {
+    //         // gameObject.layer = LayerMask.NameToLayer("Base Layer"); 
+    //         _anim.SetBool("IsDead", true);
+    //         _mover.MovePlayer(_direction, 0);
+    //     }
+    // }
 
 }
 }

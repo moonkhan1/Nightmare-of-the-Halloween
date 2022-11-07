@@ -15,7 +15,7 @@ public class RangeAttacks : MonoBehaviour
     {
             Ray ray = _cameraTransform.ViewportPointToRay(Vector3.one / 2f);
 
-            if (Physics.Raycast(ray, out RaycastHit hit, _attackData.FloatValue, _attackData.LayerMask))
+            if (Physics.Raycast(ray, out RaycastHit hit, 15f, _attackData.LayerMask))
             {
                 Debug.Log("Ilk faza");
                 if (hit.collider.TryGetComponent(out Health health) && hit.collider.tag == _tag)

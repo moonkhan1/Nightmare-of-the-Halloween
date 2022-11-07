@@ -30,6 +30,7 @@ public class EnemyController : MonoBehaviour
 
      [SerializeField] bool _canAttack;
     float _currentTime = 0f;
+    bool _playerDead;
     private void Awake() {
     }
     void Start()
@@ -37,6 +38,7 @@ public class EnemyController : MonoBehaviour
         _Player = GameObject.FindGameObjectWithTag("Player");   
         _enemyManager = GameObject.FindGameObjectWithTag("EnemyManager");  
         _playerDamage = _Player.GetComponent<PlayerController>()._rifleDamage;
+        
         _anim = GetComponent<Animator>();     
         _meleeAttack = GetComponentInChildren<MeleeAttack>();
         
@@ -49,17 +51,18 @@ public class EnemyController : MonoBehaviour
     
     void Update()
     { 
+        _playerDead = _Player.GetComponent<PlayerController>().IsPlayerDead;
         _currentTime += Time.deltaTime;
         _canAttack = _currentTime > _attackData.AttackMaxDelay;
         
         transform.LookAt(_Player.transform.position);
 
-
+        
         // new Vector3(0,0,1);
 
         //Debug.Log(Vector3.Distance(transform.position,_Player.transform.position));
 
-        if (Vector3.Distance(transform.position, _Player.transform.position) <= 1)
+        if (Vector3.Distance(transform.position, _Player.transform.position) <= 1.5f)
         {
             _anim.SetBool("IsAttacking", true);
             if (!_canAttack) 
@@ -75,10 +78,21 @@ public class EnemyController : MonoBehaviour
         }
         else
         {
-            
+            if(!_playerDead)
+            {
         // transform.position += transform.forward * Speed * Time.deltaTime;
-        transform.position = Vector3.MoveTowards(transform.position, _Player.transform.position, Speed * Time.deltaTime);
-        _anim.SetBool("IsAttacking", false);
+                transform.position = Vector3.MoveTowards(transform.position, _Player.transform.position, Speed * Time.deltaTime);
+                _anim.SetBool("IsAttacking", false);
+            }
+            if(_playerDead)
+            {
+                transform.position = gameObject.transform.position;
+                 _anim.SetBool("IsAttacking", false);
+                 _anim.SetBool("IsPlayerDead", true);
+            }
+            else{
+                StartCoroutine(IsDeadChecker(3.5f));
+            }
         }
 
 
@@ -131,6 +145,21 @@ public class EnemyController : MonoBehaviour
 
     private void OnDestroy() {
         _enemyManager.GetComponent<EnemyManager>().RemoveEnemy(this);
+    }
+  
+
+    IEnumerator IsDeadChecker(float interval)
+
+    {
+
+        if(GetComponent<Health>().IsDead)
+        {
+         _anim.SetBool("IsDead", true);
+        yield return new WaitForSeconds(interval);
+        Destroy(gameObject);
+        
+        }
+        
     }
 
 }

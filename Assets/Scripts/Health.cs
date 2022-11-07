@@ -7,9 +7,13 @@ public class Health : MonoBehaviour
 {
     [SerializeField] private int _health = 100;
     private int _maxHealth = 100;
+   public bool IsDead = false;
 
 
     public event System.Action<int,int> OnHitTaken;
+
+    private void Start() {
+    }
     void Update()
     {
         
@@ -33,7 +37,7 @@ public class Health : MonoBehaviour
         
         if(_health <= 0)
         {
-            Destroy(gameObject);
+            IsDead = true;
         }
 
     }
