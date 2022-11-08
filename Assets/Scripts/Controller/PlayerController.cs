@@ -27,7 +27,7 @@ public class PlayerController : MonoBehaviour
     // [SerializeField] Color RightArmColor;
     GameObject _Enemy;
 
-    [SerializeField] float _moveSpeed = 5f;
+    [SerializeField] float _moveSpeed = 18f;
     [SerializeField] float _turnSpeed;
     [SerializeField] Transform _cameraTransform;
     [SerializeField] GameObject Bullet;

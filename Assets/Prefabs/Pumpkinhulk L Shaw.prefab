@@ -189,8 +189,8 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 774769798475649246}
-  m_LocalRotation: {x: 0.18702349, y: -0.042234138, z: 0.010578991, w: 0.9813901}
-  m_LocalPosition: {x: -27.781883, y: 0.78045267, z: -0.6883807}
+  m_LocalRotation: {x: 0.1870234, y: -0.042234108, z: 0.010578977, w: 0.9813902}
+  m_LocalPosition: {x: -27.88768, y: 0.28727204, z: 0.55331975}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -3177,8 +3177,8 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7413557641132942692}
-  m_LocalRotation: {x: 0.18702349, y: -0.042234138, z: 0.010578991, w: 0.9813901}
-  m_LocalPosition: {x: -27.781883, y: 0.78045267, z: -0.6883807}
+  m_LocalRotation: {x: 0.1870234, y: -0.042234108, z: 0.010578977, w: 0.9813902}
+  m_LocalPosition: {x: -27.88768, y: 0.28727204, z: 0.55331975}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -3474,6 +3474,7 @@ GameObject:
   - component: {fileID: 7413557640649734955}
   - component: {fileID: 7413557640649734952}
   - component: {fileID: 7413557640649734953}
+  - component: {fileID: 1188216651}
   m_Layer: 0
   m_Name: Pumpkinhulk L Shaw
   m_TagString: Player
@@ -3490,7 +3491,7 @@ Transform:
   m_GameObject: {fileID: 7648051926996124052}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 3.5, y: 3.5, z: 3.5}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 3258588341647883194}
@@ -3656,6 +3657,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _health: 100
+  IsDead: 0
 --- !u!114 &7413557640649734953
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3668,7 +3670,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e658264979330ad4f89c25b6536b1275, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _moveSpeed: 6
+  _moveSpeed: 18
   _turnSpeed: 10
   _cameraTransform: {fileID: 7413557640756570821}
   Bullet: {fileID: 2484970793486140979, guid: 98d82bf370671264e87e4e7d42cd3918, type: 3}
@@ -3678,6 +3680,23 @@ MonoBehaviour:
   FullAttack: {fileID: 31900000, guid: 35ff99e9fc36137489db786ff4d44b57, type: 2}
   _animC: {fileID: 9100000, guid: 05fb22e2abb49e04eb4cb5895401c00e, type: 2}
   _rangedAttack: {fileID: 2802684871833818471}
+  IsPlayerDead: 0
+--- !u!54 &1188216651
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7648051926996124052}
+  serializedVersion: 2
+  m_Mass: 1
+  m_Drag: 0
+  m_AngularDrag: 0.05
+  m_UseGravity: 1
+  m_IsKinematic: 1
+  m_Interpolate: 0
+  m_Constraints: 0
+  m_CollisionDetection: 0
 --- !u!1 &8152152553335573582
 GameObject:
   m_ObjectHideFlags: 0
@@ -3957,6 +3976,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 90
       objectReference: {fileID: 0}
+    - target: {fileID: 4613687609235089996, guid: a66d64962dad7b441b895147b3616981, type: 3}
+      propertyPath: _bullet
+      value: 
+      objectReference: {fileID: 4028765178822773716, guid: 98d82bf370671264e87e4e7d42cd3918, type: 3}
     - target: {fileID: 4613687609235089996, guid: a66d64962dad7b441b895147b3616981, type: 3}
       propertyPath: _cameraTransform
       value: 

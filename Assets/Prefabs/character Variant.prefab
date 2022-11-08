@@ -104,27 +104,27 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 1571cebafae759e4894b407742a37c67, type: 3}
       propertyPath: m_LocalScale.x
-      value: 1.5
+      value: 3.5
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 1571cebafae759e4894b407742a37c67, type: 3}
       propertyPath: m_LocalScale.y
-      value: 1.5
+      value: 3.5
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 1571cebafae759e4894b407742a37c67, type: 3}
       propertyPath: m_LocalScale.z
-      value: 1.5
+      value: 3.5
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 1571cebafae759e4894b407742a37c67, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 30.623583
+      value: 12.909997
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 1571cebafae759e4894b407742a37c67, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0.25000024
+      value: 0.25
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 1571cebafae759e4894b407742a37c67, type: 3}
       propertyPath: m_LocalPosition.z
-      value: -2.533305
+      value: -1.646028
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 1571cebafae759e4894b407742a37c67, type: 3}
       propertyPath: m_LocalRotation.w
@@ -260,7 +260,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 32704ca4e37e1db4da9dbf27ed01993f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Speed: 3
+  Speed: 7.1
   _enemyDamage: 2
   _data: {fileID: 11400000, guid: d12ad2a6894d6ea459029f6210c843a8, type: 2}
   _attackData: {fileID: 11400000, guid: 847ff675aaad0ca4282a794815a10bea, type: 2}
@@ -278,6 +278,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _health: 100
+  IsDead: 0
 --- !u!4 &5718760107462919542 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: 1571cebafae759e4894b407742a37c67, type: 3}
