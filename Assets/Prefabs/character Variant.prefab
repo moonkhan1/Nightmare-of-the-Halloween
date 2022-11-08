@@ -71,7 +71,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7160493082597870509}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -0.00963974, y: 0.951, z: 0.779}
+  m_LocalPosition: {x: -0.00963974, y: 0.951, z: 0.725}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -90,7 +90,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9f5829073cab9d0468fdaa0bcc1dbce8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _radius: 0.3
+  _radius: 0.6
 --- !u!1001 &5248848032207594141
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -218,7 +218,7 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 919132149155446097, guid: 1571cebafae759e4894b407742a37c67, type: 3}
   m_PrefabInstance: {fileID: 5248848032207594141}
   m_PrefabAsset: {fileID: 0}
---- !u!54 &8618302398262121314
+--- !u!54 &9212376145832669648
 Rigidbody:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -265,6 +265,7 @@ MonoBehaviour:
   _data: {fileID: 11400000, guid: d12ad2a6894d6ea459029f6210c843a8, type: 2}
   _attackData: {fileID: 11400000, guid: 847ff675aaad0ca4282a794815a10bea, type: 2}
   _canAttack: 0
+  _point: {fileID: 5815315990873240808}
 --- !u!114 &-5476840937906273178
 MonoBehaviour:
   m_ObjectHideFlags: 0

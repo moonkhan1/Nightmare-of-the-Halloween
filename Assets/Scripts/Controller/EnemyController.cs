@@ -38,7 +38,6 @@ public class EnemyController : MonoBehaviour
         _Player = GameObject.FindGameObjectWithTag("Player");   
         _enemyManager = GameObject.FindGameObjectWithTag("EnemyManager");  
         _playerDamage = _Player.GetComponent<PlayerController>()._rifleDamage;
-        
         _anim = GetComponent<Animator>();     
         _meleeAttack = GetComponentInChildren<MeleeAttack>();
         
@@ -62,9 +61,10 @@ public class EnemyController : MonoBehaviour
 
         //Debug.Log(Vector3.Distance(transform.position,_Player.transform.position));
 
-        if (Vector3.Distance(transform.position, _Player.transform.position) <= 1.5f)
+        if (Vector3.Distance(transform.position, _Player.transform.position) <= 3f)
         {
             _anim.SetBool("IsAttacking", true);
+            Debug.Log("Reached");
             if (!_canAttack) 
             {
                 return;
@@ -155,6 +155,7 @@ public class EnemyController : MonoBehaviour
         if(GetComponent<Health>().IsDead)
         {
          _anim.SetBool("IsDead", true);
+        _canAttack = false;
         yield return new WaitForSeconds(interval);
         Destroy(gameObject);
         

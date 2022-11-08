@@ -108,8 +108,7 @@ public class PlayerController : MonoBehaviour
         {
             // gameObject.layer = LayerMask.NameToLayer("Base Layer"); 
             
-             _yRotation.RotationAction(_input.Rotation.y, 0);
-            _xRotation.RotationAction(_input.Rotation.x, 0);
+             
        
         _direction = _input.Direction;
         _yRotation.RotationAction(_input.Rotation.y, _turnSpeed);
@@ -147,6 +146,9 @@ public class PlayerController : MonoBehaviour
         }
         else{
             _anim.SetBool("IsDead", true);
+            _yRotation.RotationAction(_input.Rotation.y, 0);
+            _xRotation.RotationAction(_input.Rotation.x, 0);
+            _mover.MovePlayer(_direction, 0f);
         }
     }
     private void FixedUpdate() {
@@ -196,8 +198,10 @@ void SetPlayerStats()
     {
         GetComponent<Health>().SetHealth(_data.HP,_data.HP);
         _rifleDamage = _data.damage;
-        _swordDamage = _data.damage;
+        // _swordDamage = _data.damage;
         _moveSpeed = _data.speed;
+        Debug.Log(_swordDamage);
+        Debug.Log(_rifleDamage);
     }
 
     // void IsDeadChecker()

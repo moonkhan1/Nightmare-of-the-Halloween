@@ -13,5 +13,5 @@ MonoBehaviour:
   m_Name: PlayerData
   m_EditorClassIdentifier: 
   HP: 100
-  damage: 5
+  damage: 2
   speed: 18

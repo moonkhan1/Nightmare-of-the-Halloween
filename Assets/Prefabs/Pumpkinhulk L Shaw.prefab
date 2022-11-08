@@ -189,8 +189,8 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 774769798475649246}
-  m_LocalRotation: {x: 0.1870234, y: -0.042234108, z: 0.010578977, w: 0.9813902}
-  m_LocalPosition: {x: -27.88768, y: 0.28727204, z: 0.55331975}
+  m_LocalRotation: {x: 0.18702346, y: -0.04223411, z: 0.01057898, w: 0.9813902}
+  m_LocalPosition: {x: -27.88063, y: 0.32015097, z: 0.47053927}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -2231,7 +2231,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7413557639739976250}
   m_LocalRotation: {x: -0.000000030035125, y: 0.000000027605662, z: -0.000000022345091, w: 1}
-  m_LocalPosition: {x: -0.019999469, y: 1.1818122, z: 1.0333549}
+  m_LocalPosition: {x: -0.284, y: 1.403, z: 1}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -2250,7 +2250,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9f5829073cab9d0468fdaa0bcc1dbce8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _radius: 0.5
+  _radius: 1
 --- !u!1 &7413557639996156892
 GameObject:
   m_ObjectHideFlags: 0
@@ -3177,8 +3177,8 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7413557641132942692}
-  m_LocalRotation: {x: 0.1870234, y: -0.042234108, z: 0.010578977, w: 0.9813902}
-  m_LocalPosition: {x: -27.88768, y: 0.28727204, z: 0.55331975}
+  m_LocalRotation: {x: 0.18702346, y: -0.04223411, z: 0.01057898, w: 0.9813902}
+  m_LocalPosition: {x: -27.88063, y: 0.32015097, z: 0.47053927}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -3474,7 +3474,6 @@ GameObject:
   - component: {fileID: 7413557640649734955}
   - component: {fileID: 7413557640649734952}
   - component: {fileID: 7413557640649734953}
-  - component: {fileID: 1188216651}
   m_Layer: 0
   m_Name: Pumpkinhulk L Shaw
   m_TagString: Player
@@ -3491,7 +3490,7 @@ Transform:
   m_GameObject: {fileID: 7648051926996124052}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 3.5, y: 3.5, z: 3.5}
+  m_LocalScale: {x: 3, y: 3, z: 3}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 3258588341647883194}
@@ -3681,22 +3680,6 @@ MonoBehaviour:
   _animC: {fileID: 9100000, guid: 05fb22e2abb49e04eb4cb5895401c00e, type: 2}
   _rangedAttack: {fileID: 2802684871833818471}
   IsPlayerDead: 0
---- !u!54 &1188216651
-Rigidbody:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7648051926996124052}
-  serializedVersion: 2
-  m_Mass: 1
-  m_Drag: 0
-  m_AngularDrag: 0.05
-  m_UseGravity: 1
-  m_IsKinematic: 1
-  m_Interpolate: 0
-  m_Constraints: 0
-  m_CollisionDetection: 0
 --- !u!1 &8152152553335573582
 GameObject:
   m_ObjectHideFlags: 0
