@@ -3672,7 +3672,7 @@ MonoBehaviour:
   _moveSpeed: 18
   _turnSpeed: 10
   _cameraTransform: {fileID: 7413557640756570821}
-  Bullet: {fileID: 2484970793486140979, guid: 98d82bf370671264e87e4e7d42cd3918, type: 3}
+  Bullet: {fileID: 1389972526024924895, guid: 4f972f4bd91e8f9429cfb5eb6bcfa58c, type: 3}
   FireFrom: {fileID: 7413557639731616483}
   _data: {fileID: 11400000, guid: 1b0fcf9e753cb3d45bec313a3a84fbee, type: 2}
   RunAttack: {fileID: 31900000, guid: 355c875ffb222d1469ad62e08810b6c0, type: 2}
@@ -3680,6 +3680,7 @@ MonoBehaviour:
   _animC: {fileID: 9100000, guid: 05fb22e2abb49e04eb4cb5895401c00e, type: 2}
   _rangedAttack: {fileID: 2802684871833818471}
   IsPlayerDead: 0
+  _cinemachineVirtualCamera: {fileID: 0}
 --- !u!1 &8152152553335573582
 GameObject:
   m_ObjectHideFlags: 0

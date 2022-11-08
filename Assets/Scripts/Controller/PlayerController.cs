@@ -8,6 +8,7 @@ using Project.Datas;
 using UnityEditor.Animations;
 using Project.Attacks;
 using DG.Tweening;
+using Cinemachine;
 
 namespace Project.Controller
 {
@@ -62,6 +63,8 @@ public class PlayerController : MonoBehaviour
     bool waitTime = true;
     public bool IsPlayerDead;
 
+    [SerializeField] CinemachineVirtualCamera _cinemachineVirtualCamera;
+
 
     // public Controller _controller;
 
@@ -84,6 +87,7 @@ public class PlayerController : MonoBehaviour
     {
         
         SetPlayerStats();
+        //  _cinemachineVirtualCamera = GetComponentInChildren<CinemachineVirtualCamera>();
         _Enemy = GameObject.FindGameObjectWithTag("Enemy");
         _anim = GetComponent<Animator>();
         _weaponSwitch = GetComponentInChildren<WeaponSwtcher>();
@@ -149,6 +153,7 @@ public class PlayerController : MonoBehaviour
             _yRotation.RotationAction(_input.Rotation.y, 0);
             _xRotation.RotationAction(_input.Rotation.x, 0);
             _mover.MovePlayer(_direction, 0f);
+            // VirtualCameraMove();
         }
     }
     private void FixedUpdate() {
@@ -212,6 +217,21 @@ void SetPlayerStats()
     //         _anim.SetBool("IsDead", true);
     //         _mover.MovePlayer(_direction, 0);
     //     }
+    // }
+
+    // void VirtualCameraMove()
+    // {
+        
+    //    _cinemachineVirtualCamera.GetCinemachineComponent<CinemachineTransposer>().m_BindingMode = CinemachineTransposer.BindingMode.LockToTargetOnAssign;
+
+    //     _cinemachineVirtualCamera.Follow = null;
+    //     _cinemachineVirtualCamera.LookAt = null;
+
+    //     _cinemachineVirtualCamera.transform.position = Vector3.Lerp(_cinemachineVirtualCamera.transform.position,
+    //         new Vector3(0, 1, 2), 1f * Time.deltaTime);
+
+    //     _cinemachineVirtualCamera.transform.rotation = Quaternion.Lerp(_cinemachineVirtualCamera.transform.rotation,
+    //         Quaternion.Euler(new Vector3(-6, 75, 0)), 1f * Time.deltaTime);
     // }
 
 }
