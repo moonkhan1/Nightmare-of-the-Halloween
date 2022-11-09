@@ -15,7 +15,7 @@ MonoBehaviour:
   active: 1
   redOutRedIn:
     m_OverrideState: 1
-    m_Value: 25
+    m_Value: 11
   redOutGreenIn:
     m_OverrideState: 1
     m_Value: 0
@@ -91,25 +91,25 @@ MonoBehaviour:
   active: 1
   threshold:
     m_OverrideState: 1
-    m_Value: 16.75
+    m_Value: 0.96
   intensity:
     m_OverrideState: 1
-    m_Value: 10.3
+    m_Value: 14.79
   scatter:
     m_OverrideState: 1
-    m_Value: 0.249
+    m_Value: 0.309
   clamp:
     m_OverrideState: 1
     m_Value: 65472
   tint:
     m_OverrideState: 1
-    m_Value: {r: 0.6784314, g: 0.5927677, b: 0.15686275, a: 1}
+    m_Value: {r: 0.6981132, g: 0.6124856, b: 0.18045564, a: 1}
   highQualityFiltering:
     m_OverrideState: 1
     m_Value: 1
   skipIterations:
     m_OverrideState: 1
-    m_Value: 2
+    m_Value: 7
   dirtTexture:
     m_OverrideState: 1
     m_Value: {fileID: 0}
