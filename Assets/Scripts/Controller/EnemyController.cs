@@ -32,6 +32,10 @@ public class EnemyController : MonoBehaviour
      [SerializeField] bool _canAttack;
     float _currentTime = 0f;
     bool _playerDead;
+
+    [SerializeField] Material mat;
+    [SerializeField] Color defaultColor;
+    [SerializeField] Color damageColor;
     private void Awake() {
     }
     void Start()
@@ -62,7 +66,7 @@ public class EnemyController : MonoBehaviour
 
         //Debug.Log(Vector3.Distance(transform.position,_Player.transform.position));
 
-        if (Vector3.Distance(transform.position, _Player.transform.position) <= 4f)
+        if (Vector3.Distance(transform.position, _Player.transform.position) <= 5f)
         {
             _anim.SetBool("IsAttacking", true);
             Debug.Log("Reached");
@@ -92,7 +96,7 @@ public class EnemyController : MonoBehaviour
                  _anim.SetBool("IsPlayerDead", true);
             }
             else{
-                StartCoroutine(IsDeadChecker(3.5f));
+                StartCoroutine(IsDeadChecker(2f));
             }
         }
 
@@ -114,7 +118,9 @@ public class EnemyController : MonoBehaviour
         {
              this.GetComponent<Health>().Damage(_playerDamage);
             Debug.Log("collision and damage");
-            
+            var seq = DOTween.Sequence();
+                        seq.Append(mat.DOColor(damageColor, "_BaseColor", 0.2f)).Join(transform.DOShakeScale(0.1f, 1));
+                        seq.Append(mat.DOColor(defaultColor, "_BaseColor", 0.2f));            
             Debug.Log(_playerDamage);
         }
     }

@@ -1,6 +1,6 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!1 &2647221788703752512
+--- !u!1 &7472684367298233761
 GameObject:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -8,45 +8,41 @@ GameObject:
   m_PrefabAsset: {fileID: 0}
   serializedVersion: 6
   m_Component:
-  - component: {fileID: 2647221788703752514}
-  - component: {fileID: 2647221788703752515}
+  - component: {fileID: 7472684367298233791}
+  - component: {fileID: 7472684367298233790}
   m_Layer: 0
-  m_Name: GameManager
-  m_TagString: GameManager
+  m_Name: GameObject (1)
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!4 &2647221788703752514
+--- !u!4 &7472684367298233791
 Transform:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2647221788703752512}
+  m_GameObject: {fileID: 7472684367298233761}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 1277.5201, y: 998.0389, z: 15.430664}
+  m_LocalPosition: {x: -1.5955626, y: 6.7710752, z: 3.7156417}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &2647221788703752515
+--- !u!114 &7472684367298233790
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2647221788703752512}
+  m_GameObject: {fileID: 7472684367298233761}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5b940f4a948dc1b4f99d3554a18f1692, type: 3}
+  m_Script: {fileID: 11500000, guid: 63e9c07f294b22048bb0f26cfee27024, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _waveLevel: 1
-  _waveMaxCount: 5
-  _waitForNextWave: 6
-  _nextWaveMultiplier: 2.2
-  _player: {fileID: 5428331228173366572, guid: 3a7a3d5f66e8ba1478c39656bda3125d, type: 3}
-  _goPanel: {fileID: 8441662441935407123, guid: a40f3916b0358504188b59663a2dd3ea, type: 3}
+  _player: {fileID: 0}
+  _goPanel: {fileID: 0}

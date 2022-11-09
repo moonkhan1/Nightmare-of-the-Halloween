@@ -135,7 +135,7 @@ public class PlayerController : MonoBehaviour
                 if (_isTriggered && waitTime)
                 {
                     waitTime = false;
-                    StartCoroutine(Reload(0.5f));
+                    StartCoroutine(Reload(0.1f));
                     _anim.SetBool("SwordAttack2", true);
                     _meleeAttack.AttackAction("Enemy", _swordDamage);
                     Debug.Log("Hitted");

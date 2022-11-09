@@ -18,8 +18,7 @@ namespace Project.Managers
         [SerializeField] float _nextWaveMultiplier = 2.2f;
 
         GameObject _enemyManager;
-        GameObject _player;
-        [SerializeField]GameOverPanel _goPanel;
+        
 
         int _currentMaxWaveCount;
         public bool IsWaveFinished => _currentMaxWaveCount <= 0;
@@ -28,18 +27,13 @@ namespace Project.Managers
 
         private void Awake() {
             _enemyManager = GameObject.FindGameObjectWithTag("EnemyManager");
-            _player = GameObject.FindGameObjectWithTag("Player");
+            
         }
         private void Start() {
             _currentMaxWaveCount = _waveMaxCount;
         }
 
-        private void Update() {
-            if(_player.GetComponent<PlayerController>().IsPlayerDead)
-            {
-                Invoke("WaitAndShowUp", 1f);
-            }
-        }
+        
         public void LoadScene(string name)
         {
             StartCoroutine(LoadLevel(name));
@@ -72,10 +66,7 @@ namespace Project.Managers
                 }
             
         }
-        void WaitAndShowUp()
-    {
-        _goPanel.gameObject.SetActive(true);
-    }
+        
 
         IEnumerator StartNextWave()
         {

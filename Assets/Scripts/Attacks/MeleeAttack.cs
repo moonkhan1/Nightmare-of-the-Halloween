@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using Project.Datas;
 using Project.Controller;
+using DG.Tweening;
 
 namespace Project.Attacks
 {
@@ -10,6 +11,9 @@ public class MeleeAttack : MonoBehaviour
 {
     [SerializeField] Transform _transformAttackPoint;
     [SerializeField] AttackData _attackData;
+    [SerializeField] Material mat;
+    [SerializeField] Color defaultColor;
+    [SerializeField] Color damageColor;
     
  private void Start() {
 
@@ -31,6 +35,13 @@ public class MeleeAttack : MonoBehaviour
                 {   
                      
                     collider.GetComponent<Health>().Damage(damage);
+                    if (collider.tag == "Enemy")
+                    {
+                        var seq = DOTween.Sequence();
+                        seq.Append(mat.DOColor(damageColor, "_BaseColor", 0.2f)).Join(transform.DOShakeScale(0.1f, 1));
+                        seq.Append(mat.DOColor(defaultColor, "_BaseColor", 0.2f));
+
+                    }
 
                     
                 }
