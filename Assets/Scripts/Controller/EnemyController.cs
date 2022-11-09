@@ -4,6 +4,7 @@ using UnityEngine;
 using Project.Datas;
 using Project.Managers;
 using Project.Attacks;
+using DG.Tweening;
 
 
 namespace Project.Controller{
@@ -54,14 +55,14 @@ public class EnemyController : MonoBehaviour
         _currentTime += Time.deltaTime;
         _canAttack = _currentTime > _attackData.AttackMaxDelay;
         
-        transform.LookAt(_Player.transform.position);
+        
 
         
         // new Vector3(0,0,1);
 
         //Debug.Log(Vector3.Distance(transform.position,_Player.transform.position));
 
-        if (Vector3.Distance(transform.position, _Player.transform.position) <= 3f)
+        if (Vector3.Distance(transform.position, _Player.transform.position) <= 4f)
         {
             _anim.SetBool("IsAttacking", true);
             Debug.Log("Reached");
@@ -80,13 +81,13 @@ public class EnemyController : MonoBehaviour
         {
             if(!_playerDead)
             {
-        // transform.position += transform.forward * Speed * Time.deltaTime;
+                transform.LookAt(_Player.transform.position);
                 transform.position = Vector3.MoveTowards(transform.position, _Player.transform.position, Speed * Time.deltaTime);
+
                 _anim.SetBool("IsAttacking", false);
             }
-            if(_playerDead)
+        if(_playerDead)
             {
-                transform.position = gameObject.transform.position;
                  _anim.SetBool("IsAttacking", false);
                  _anim.SetBool("IsPlayerDead", true);
             }
@@ -156,6 +157,7 @@ public class EnemyController : MonoBehaviour
         {
          _anim.SetBool("IsDead", true);
         _canAttack = false;
+        
         yield return new WaitForSeconds(interval);
         Destroy(gameObject);
         

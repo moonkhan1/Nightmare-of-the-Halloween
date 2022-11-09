@@ -28,7 +28,7 @@ public class PlayerController : MonoBehaviour
     // [SerializeField] Color RightArmColor;
     GameObject _Enemy;
 
-    [SerializeField] float _moveSpeed = 18f;
+    [SerializeField] float _moveSpeed = 12f;
     [SerializeField] float _turnSpeed;
     [SerializeField] Transform _cameraTransform;
     [SerializeField] GameObject Bullet;
@@ -87,7 +87,7 @@ public class PlayerController : MonoBehaviour
     {
         
         SetPlayerStats();
-        //  _cinemachineVirtualCamera = GetComponentInChildren<CinemachineVirtualCamera>();
+         _cinemachineVirtualCamera = GetComponentInChildren<CinemachineVirtualCamera>();
         _Enemy = GameObject.FindGameObjectWithTag("Enemy");
         _anim = GetComponent<Animator>();
         _weaponSwitch = GetComponentInChildren<WeaponSwtcher>();
@@ -110,10 +110,6 @@ public class PlayerController : MonoBehaviour
         }
         if(!IsPlayerDead)
         {
-            // gameObject.layer = LayerMask.NameToLayer("Base Layer"); 
-            
-             
-       
         _direction = _input.Direction;
         _yRotation.RotationAction(_input.Rotation.y, _turnSpeed);
         _xRotation.RotationAction(_input.Rotation.x, _turnSpeed);
@@ -150,15 +146,16 @@ public class PlayerController : MonoBehaviour
         }
         else{
             _anim.SetBool("IsDead", true);
-            _yRotation.RotationAction(_input.Rotation.y, 0);
-            _xRotation.RotationAction(_input.Rotation.x, 0);
-            _mover.MovePlayer(_direction, 0f);
-            // VirtualCameraMove();
+            
+            VirtualCameraMove();
         }
     }
     private void FixedUpdate() {
         
-     _mover.MovePlayer(_direction, _moveSpeed);
+     if(!IsPlayerDead)
+        {
+       _mover.MovePlayer(_direction, _moveSpeed);
+        }
 
         // if (_isTriggered && waitTime)
         // {
@@ -209,30 +206,21 @@ void SetPlayerStats()
         Debug.Log(_rifleDamage);
     }
 
-    // void IsDeadChecker()
-    // {
-    //     if(GetComponent<Health>().IsDead)
-    //     {
-    //         // gameObject.layer = LayerMask.NameToLayer("Base Layer"); 
-    //         _anim.SetBool("IsDead", true);
-    //         _mover.MovePlayer(_direction, 0);
-    //     }
-    // }
 
-    // void VirtualCameraMove()
-    // {
+    void VirtualCameraMove()
+    {
         
     //    _cinemachineVirtualCamera.GetCinemachineComponent<CinemachineTransposer>().m_BindingMode = CinemachineTransposer.BindingMode.LockToTargetOnAssign;
 
-    //     _cinemachineVirtualCamera.Follow = null;
-    //     _cinemachineVirtualCamera.LookAt = null;
+        _cinemachineVirtualCamera.Follow = null;
+        _cinemachineVirtualCamera.LookAt = null;
 
-    //     _cinemachineVirtualCamera.transform.position = Vector3.Lerp(_cinemachineVirtualCamera.transform.position,
-    //         new Vector3(0, 1, 2), 1f * Time.deltaTime);
+        _cinemachineVirtualCamera.transform.position = Vector3.Lerp(_cinemachineVirtualCamera.transform.position,
+            new Vector3(5, 10, 2), 1f * Time.deltaTime);
 
-    //     _cinemachineVirtualCamera.transform.rotation = Quaternion.Lerp(_cinemachineVirtualCamera.transform.rotation,
-    //         Quaternion.Euler(new Vector3(-6, 75, 0)), 1f * Time.deltaTime);
-    // }
+        _cinemachineVirtualCamera.transform.rotation = Quaternion.Lerp(_cinemachineVirtualCamera.transform.rotation,
+            Quaternion.Euler(new Vector3(-6, 90, 0)), 1f * Time.deltaTime);
+    }
 
 }
 }

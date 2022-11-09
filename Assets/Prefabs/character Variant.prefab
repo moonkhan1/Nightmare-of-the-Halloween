@@ -260,12 +260,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 32704ca4e37e1db4da9dbf27ed01993f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Speed: 7.1
+  Speed: 8
   _enemyDamage: 2
   _data: {fileID: 11400000, guid: d12ad2a6894d6ea459029f6210c843a8, type: 2}
   _attackData: {fileID: 11400000, guid: 847ff675aaad0ca4282a794815a10bea, type: 2}
   _canAttack: 0
-  _point: {fileID: 5815315990873240808}
 --- !u!114 &-5476840937906273178
 MonoBehaviour:
   m_ObjectHideFlags: 0

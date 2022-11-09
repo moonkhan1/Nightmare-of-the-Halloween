@@ -4,6 +4,7 @@ using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
 using Project.Controller;
+using Project.UIS;
 
 namespace Project.Managers
 {
@@ -18,6 +19,7 @@ namespace Project.Managers
 
         GameObject _enemyManager;
         GameObject _player;
+        [SerializeField]GameOverPanel _goPanel;
 
         int _currentMaxWaveCount;
         public bool IsWaveFinished => _currentMaxWaveCount <= 0;
@@ -30,6 +32,13 @@ namespace Project.Managers
         }
         private void Start() {
             _currentMaxWaveCount = _waveMaxCount;
+        }
+
+        private void Update() {
+            if(_player.GetComponent<PlayerController>().IsPlayerDead)
+            {
+                Invoke("WaitAndShowUp", 1f);
+            }
         }
         public void LoadScene(string name)
         {
@@ -63,6 +72,10 @@ namespace Project.Managers
                 }
             
         }
+        void WaitAndShowUp()
+    {
+        _goPanel.gameObject.SetActive(true);
+    }
 
         IEnumerator StartNextWave()
         {

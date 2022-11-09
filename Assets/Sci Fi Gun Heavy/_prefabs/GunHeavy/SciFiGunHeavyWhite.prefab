@@ -96,7 +96,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4e1d5b4bf8e0f274c9c5727c5ba78196, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _cameraTransform: {fileID: 0}
-  _bullet: {fileID: 2484970793486140983, guid: 98d82bf370671264e87e4e7d42cd3918, type: 3}
+  _cameraTransform: {fileID: 6341298203144581834, guid: ca6ee9232ccfc8e4cb627b21bce6b870, type: 3}
+  _bullet: {fileID: 136410799636691259, guid: 4f972f4bd91e8f9429cfb5eb6bcfa58c, type: 3}
   FireFrom: {fileID: 402888}
   _attackData: {fileID: 11400000, guid: 847ff675aaad0ca4282a794815a10bea, type: 2}

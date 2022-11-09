@@ -12,6 +12,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9ea014a6faad4f64aaa9d0434f4578c7, type: 3}
   m_Name: SpawnerData
   m_EditorClassIdentifier: 
-  _enemy: {fileID: -7979901534710229271, guid: 33575e0e4025a6f4bb49d7b7b1653fdc, type: 3}
+  _enemy: {fileID: 2043508961, guid: 3a7a3d5f66e8ba1478c39656bda3125d, type: 3}
   _maxSpawnTime: 20
   _minSpawnTime: 5

@@ -28,6 +28,6 @@ public class RangeAttacks : MonoBehaviour
 
 
         var bullet = Instantiate(_bullet, FireFrom.position, FireFrom.rotation);
-        bullet.SetDirection(ray.direction);
+        // bullet.SetDirection(ray.direction);
     }
 }
