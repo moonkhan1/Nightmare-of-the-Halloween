@@ -17,9 +17,15 @@ public class DisplayHealth : MonoBehaviour
         _healthImage.fillAmount = Convert.ToSingle(_health) / Convert.ToSingle(_maxHealth);
     }
 
+    void HillTaken(int _health, int _maxHealth)
+    {
+        _healthImage.fillAmount =Convert.ToSingle(_health) / Convert.ToSingle(_maxHealth);
+    }
+
     private void OnEnable() {
         Health _health = GetComponentInParent<Health>();
         _health.OnHitTaken += HitTaken;
+        _health.OnHillTaken += HillTaken;
     }
 
 

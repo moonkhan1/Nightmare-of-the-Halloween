@@ -11,6 +11,7 @@ public class Health : MonoBehaviour
 
 
     public event System.Action<int,int> OnHitTaken;
+    public event System.Action<int,int> OnHillTaken;
 
     private void Start() {
     }
@@ -42,18 +43,19 @@ public class Health : MonoBehaviour
 
     }
 
-    // public void Heal(int amount)
-    // {
-    //     if(amount > 0)
-    //     {
-    //         if (health + amount > _maxHealth)
-    //         {
-    //             this.health = _maxHealth;
-    //         }
-    //         else
-    //         {
-    //             this.health += amount;
-    //         }
-    //     }
-    // }
+     public void Heal(int amount)
+    {
+        if(amount > 0)
+         {
+             if (_health + amount > _maxHealth)
+             {
+                 this._health = _maxHealth;
+            }
+            else
+            {
+                this._health += amount;
+                OnHillTaken?.Invoke(_health, _maxHealth);
+            }
+    }
+     }
 }

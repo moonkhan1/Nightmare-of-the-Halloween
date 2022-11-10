@@ -16,10 +16,16 @@ public class SpawnerController : MonoBehaviour
     GameObject _gameManager;
     float _currentTime = 0f;
 
+    float currentTimeForHeal = 0f;
+    [SerializeField]float _maxTimeforHeal;
+    [SerializeField] int _healPortionCount = 0;
+    [SerializeField] GameObject _healPortion;
+
      void Start() {
         _enemyManager = GameObject.FindGameObjectWithTag("EnemyManager");  
          _gameManager = GameObject.FindGameObjectWithTag("GameManager");  
         _maxTime = _spawnData.RandomSpawn;
+        
     }
 
      void Update() {
@@ -29,6 +35,8 @@ public class SpawnerController : MonoBehaviour
         {
             Spawn();
         }
+
+        
     }
 
     void Spawn()
@@ -40,5 +48,6 @@ public class SpawnerController : MonoBehaviour
         _currentTime = 0f;
         _maxTime = _spawnData.RandomSpawn;
     }
+
 }
 }
