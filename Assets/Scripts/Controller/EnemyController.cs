@@ -64,7 +64,7 @@ public class EnemyController : MonoBehaviour
         _currentTime += Time.deltaTime;
         _canAttack = _currentTime > _attackData.AttackMaxDelay;
          _navMesh.SetDestination(_Player.transform.position);
-        rb.MovePosition(transform.position * Time.deltaTime * Speed);
+        rb.MovePosition(transform.forward  * Time.deltaTime * Speed);
         StartCoroutine(IsDeadChecker(2f));
         _anim.SetBool("IsAttacking", false);
 
