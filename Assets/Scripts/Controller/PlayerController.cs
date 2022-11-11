@@ -64,6 +64,7 @@ public class PlayerController : MonoBehaviour
     public bool IsPlayerDead;
 
     [SerializeField] CinemachineVirtualCamera _cinemachineVirtualCamera;
+    public ParticleSystem _muzzleLight;
 
 
     // public Controller _controller;
@@ -122,11 +123,15 @@ public class PlayerController : MonoBehaviour
                 if (_isTriggered && waitTime)
                 {
                     waitTime = false;
+                    _muzzleLight.Play();
                     StartCoroutine(Reload(0.3f));
                     _anim.SetBool("RifleAttack2", true);
                     _rangedAttack.AttackAction("Enemy", _rifleDamage);
                 }
+                else{
                 _isTriggered= false;
+                _muzzleLight.Stop();
+                }
         }
         if (_weaponSwitch._weaponIndex == 0)
         {
@@ -135,6 +140,7 @@ public class PlayerController : MonoBehaviour
                 if (_isTriggered && waitTime)
                 {
                     waitTime = false;
+                    
                     StartCoroutine(Reload(0.1f));
                     _anim.SetBool("SwordAttack2", true);
                     _meleeAttack.AttackAction("Enemy", _swordDamage);

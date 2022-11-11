@@ -8,6 +8,7 @@ public class RangeAttacks : MonoBehaviour
     [SerializeField] Camera _cameraTransform;
     [SerializeField] Bullet _bullet;
     [SerializeField] Transform FireFrom;
+    
     bool waitTime = true;
 
     [SerializeField] AttackData _attackData;
@@ -28,6 +29,7 @@ public class RangeAttacks : MonoBehaviour
 
 
         var bullet = Instantiate(_bullet, FireFrom.position, FireFrom.rotation);
+        
         // bullet.SetDirection(ray.direction);
     }
 }
