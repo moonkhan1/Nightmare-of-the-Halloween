@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.AI;
 using Project.Datas;
 using Project.Managers;
 using Project.Attacks;
@@ -36,6 +37,9 @@ public class EnemyController : MonoBehaviour
     [SerializeField] Material mat;
     [SerializeField] Color defaultColor;
     [SerializeField] Color damageColor;
+
+    NavMeshAgent _navMesh;
+    Rigidbody rb;
     private void Awake() {
     }
     void Start()
@@ -45,7 +49,8 @@ public class EnemyController : MonoBehaviour
         _playerDamage = _Player.GetComponent<PlayerController>()._rifleDamage;
         _anim = GetComponent<Animator>();     
         _meleeAttack = GetComponentInChildren<MeleeAttack>();
-        
+        _navMesh = GetComponent<NavMeshAgent>();
+        rb = GetComponent<Rigidbody>();
         SetEnemyStats();
         
         
@@ -58,61 +63,42 @@ public class EnemyController : MonoBehaviour
         _playerDead = _Player.GetComponent<PlayerController>().IsPlayerDead;
         _currentTime += Time.deltaTime;
         _canAttack = _currentTime > _attackData.AttackMaxDelay;
-        
-        
+         _navMesh.SetDestination(_Player.transform.position);
+        rb.MovePosition(transform.position * Time.deltaTime * Speed);
+        StartCoroutine(IsDeadChecker(2f));
+        _anim.SetBool("IsAttacking", false);
 
         
-        // new Vector3(0,0,1);
-
-        //Debug.Log(Vector3.Distance(transform.position,_Player.transform.position));
-
-        if (Vector3.Distance(transform.position, _Player.transform.position) <= 5f)
-        {
-            _anim.SetBool("IsAttacking", true);
-            Debug.Log("Reached");
-            if (!_canAttack) 
+        
+            if(!_playerDead && Vector3.Distance(transform.position, _Player.transform.position) <= 5f)
             {
-                return;
-        
-            }
-            else
-            {
-                _meleeAttack.AttackAction("Player", _enemyDamage);
-            }
-            _currentTime = 0f;
-        }
-        else
-        {
-            if(!_playerDead)
-            {
-                transform.LookAt(_Player.transform.position);
-                transform.position = Vector3.MoveTowards(transform.position, _Player.transform.position, Speed * Time.deltaTime);
+                
+                _anim.SetBool("IsAttacking", true);
 
-                _anim.SetBool("IsAttacking", false);
+                if (!_canAttack) 
+                {
+                   return;
+
+        
+                }
+                else
+                {
+
+                    _meleeAttack.AttackAction("Player", _enemyDamage);
+                }
+                _currentTime = 0f;
             }
         if(_playerDead)
             {
                  _anim.SetBool("IsAttacking", false);
                  _anim.SetBool("IsPlayerDead", true);
             }
-            else{
-                StartCoroutine(IsDeadChecker(2f));
-            }
-        }
+            
 
 
     }
 
-    // void OnTriggerEnter(Collision other) {
-    //     if (other.gameObject.CompareTag("Bullet"))
-    //     {
-            
-    //         this.GetComponent<Health>().Damage(_playerDamage);
-    //         Debug.Log("collision and damage");
-            
-    //         Debug.Log(_playerDamage);
-    //     }
-    // }
+ 
     private void OnTriggerEnter(Collider other) {
         if (other.CompareTag("Bullet"))
         {
@@ -125,22 +111,7 @@ public class EnemyController : MonoBehaviour
         }
     }
         
-    // }
-
-    //  void OnCollisionStay(Collision collision) {
-    //     if (collision.gameObject.CompareTag("Player"))
-    //     {
-    //         if (collision.gameObject.GetComponent<Health>() != null)
-    //         {
-    //             if (Time.time >= nextAttack )
-    //             {
-                    
-    //             collision.gameObject.GetComponent<Health>().Damage(_enemyDamage);
-    //             nextAttack = Time.time + AttackTime/AttackRate;
-    //             }
-    //         }
-    //     }
-    // }
+    
 
     void SetEnemyStats()
     {
@@ -166,6 +137,7 @@ public class EnemyController : MonoBehaviour
         
         yield return new WaitForSeconds(interval);
         Destroy(gameObject);
+        StopCoroutine(IsDeadChecker(1f));
         
         }
         

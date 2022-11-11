@@ -5,10 +5,11 @@ using System;
 
 public class Health : MonoBehaviour
 {
-    [SerializeField] private int _health = 100;
+    [SerializeField] public int _health = 100;
     private int _maxHealth = 100;
    public bool IsDead = false;
 
+    public int PlayerHealth => _health;
 
     public event System.Action<int,int> OnHitTaken;
     public event System.Action<int,int> OnHillTaken;

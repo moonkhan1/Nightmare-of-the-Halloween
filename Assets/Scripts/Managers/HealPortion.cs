@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Project.Controller;
 
 namespace Project.Managers{
 public class HealPortion : MonoBehaviour
@@ -25,7 +26,7 @@ public class HealPortion : MonoBehaviour
    
 
     private void OnTriggerEnter(Collider other) {
-        if (other.CompareTag("Player"))
+        if (other.CompareTag("Player") && _Player.GetComponent<Health>().PlayerHealth < 100)
         {
             Debug.Log("Heal");
             other.transform.GetComponent<Health>().Heal(value);
