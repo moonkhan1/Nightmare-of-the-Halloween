@@ -8858,6 +8858,9 @@ MonoBehaviour:
   _bullet: {fileID: 136410799636691259, guid: 4f972f4bd91e8f9429cfb5eb6bcfa58c, type: 3}
   FireFrom: {fileID: 8002810604027417669}
   _attackData: {fileID: 11400000, guid: 847ff675aaad0ca4282a794815a10bea, type: 2}
+  mat: {fileID: 2100000, guid: cb574626ccd934f46ad856675166b0ef, type: 2}
+  defaultColor: {r: 1, g: 1, b: 1, a: 1}
+  damageColor: {r: 1, g: 0.0037735105, b: 0.0037735105, a: 1}
 --- !u!1 &8734654083119431756
 GameObject:
   m_ObjectHideFlags: 0

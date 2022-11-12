@@ -28,17 +28,26 @@ public class HealPortion : MonoBehaviour
    
 
     private void OnTriggerEnter(Collider other) {
-        _healParticles.Play();
         if (other.CompareTag("Player") && _Player.GetComponent<Health>().PlayerHealth < 100)
         {
+        _healParticles.Play();
             Debug.Log("Heal");
             
             other.transform.GetComponent<Health>().Heal(value);
             // _spawner.GetComponent<HealSpawner>()._healPortionCount --;
-            Destroy(this.gameObject);
+            StartCoroutine(DestroyPotion());
 
         }
         
+    }
+
+    IEnumerator DestroyPotion()
+    {
+        while (true)
+        {
+            yield return new WaitForSeconds(1f);
+            Destroy(this.gameObject);
+        }
     }
 
     private void OnDestroy() {
