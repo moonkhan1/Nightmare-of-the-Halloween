@@ -10,6 +10,7 @@ public class HealPortion : MonoBehaviour
     GameObject _spawner;
     
     GameObject _Player;
+    MeshRenderer[] _mesh;
 
     public ParticleSystem _healParticles;
     void Start()
@@ -17,6 +18,10 @@ public class HealPortion : MonoBehaviour
         value = Random.Range(6,13);
         _Player = GameObject.FindGameObjectWithTag("Player");  
         _spawner =  GameObject.FindGameObjectWithTag("HealManager");  
+        
+        _mesh = GetComponentsInChildren<MeshRenderer>();
+            
+        
     }
 
     // Update is called once per frame
@@ -31,10 +36,13 @@ public class HealPortion : MonoBehaviour
         if (other.CompareTag("Player") && _Player.GetComponent<Health>().PlayerHealth < 100)
         {
         _healParticles.Play();
-            Debug.Log("Heal");
+        for (int i = 0; i <_mesh.Length ; i++)
+        {
+            _mesh[i].GetComponent<MeshRenderer>().enabled = false;
+        }
+        
             
             other.transform.GetComponent<Health>().Heal(value);
-            // _spawner.GetComponent<HealSpawner>()._healPortionCount --;
             StartCoroutine(DestroyPotion());
 
         }
@@ -51,7 +59,6 @@ public class HealPortion : MonoBehaviour
     }
 
     private void OnDestroy() {
-        // _healParticles.Stop();
         _spawner.GetComponent<HealSpawner>().RemoveProtion(this);
     }
 }

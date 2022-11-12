@@ -21,13 +21,7 @@ private void Awake() {
           }
         transform.position += transform.forward * Speed * Time.deltaTime;
     }
-    // void OnCollisionEnter(Collision collision) {
-    //     if (collision.gameObject.CompareTag("Enemy"))
-    //     {
-    //         Destroy(gameObject);
-    //          Debug.Log(other.name);
-    //     }
-    // }
+
 
     void OnTriggerEnter(Collider other)
         {
@@ -42,8 +36,5 @@ private void Awake() {
 
     
 
-    // public void Shoot()
-    // {
-    //     Instantiate(Bullet, FireFrom.position, Quaternion.Euler(0, 0, 0));
-    // }
+
 }

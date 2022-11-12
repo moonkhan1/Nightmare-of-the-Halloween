@@ -67,7 +67,6 @@ public class PlayerController : MonoBehaviour
     public ParticleSystem _muzzleLight;
 
 
-    // public Controller _controller;
 
     public Transform CameraTransform => _cameraTransform;
     
@@ -93,7 +92,6 @@ public class PlayerController : MonoBehaviour
         _anim = GetComponent<Animator>();
         _weaponSwitch = GetComponentInChildren<WeaponSwtcher>();
         _meleeAttack = GetComponentInChildren<MeleeAttack>();
-        // _rangedAttack = GetComponentInChildren<RangeAttacks>();
  
     }
 
@@ -144,7 +142,6 @@ public class PlayerController : MonoBehaviour
                     StartCoroutine(Reload(0.1f));
                     _anim.SetBool("SwordAttack2", true);
                     _meleeAttack.AttackAction("Enemy", _swordDamage);
-                    Debug.Log("Hitted");
                 }
                 _isTriggered= false;
         }
@@ -163,15 +160,6 @@ public class PlayerController : MonoBehaviour
        _mover.MovePlayer(_direction, _moveSpeed);
         }
 
-        // if (_isTriggered && waitTime)
-        // {
-        //     waitTime = false;
-        //     StartCoroutine(Reload());
-
-            
-        // }
-        // _isTriggered= false;
-
 
     }
     void LateUpdate() {
@@ -186,14 +174,6 @@ public class PlayerController : MonoBehaviour
     }
 
 
-    //    IEnumerator SpawnAndKillBullet()
-    // {
-        
-    //     GameObject _bullet = Instantiate(Bullet, FireFrom.position, transform.rotation);
-        
-    //     yield return new WaitForSeconds(4f);
-    //     Destroy(_bullet);
-    // }
 
     IEnumerator Reload(float interval)
 
@@ -206,7 +186,6 @@ void SetPlayerStats()
     {
         GetComponent<Health>().SetHealth(_data.HP,_data.HP);
         _rifleDamage = _data.damage;
-        // _swordDamage = _data.damage;
         _moveSpeed = _data.speed;
         Debug.Log(_swordDamage);
         Debug.Log(_rifleDamage);
@@ -216,7 +195,6 @@ void SetPlayerStats()
     void VirtualCameraMove()
     {
         
-    //    _cinemachineVirtualCamera.GetCinemachineComponent<CinemachineTransposer>().m_BindingMode = CinemachineTransposer.BindingMode.LockToTargetOnAssign;
 
         _cinemachineVirtualCamera.Follow = null;
         _cinemachineVirtualCamera.LookAt = null;

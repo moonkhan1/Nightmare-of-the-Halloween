@@ -104,7 +104,6 @@ public class EnemyController : MonoBehaviour
         if (other.CompareTag("Bullet"))
         {
              this.GetComponent<Health>().Damage(_playerDamage);
-            Debug.Log("collision and damage");
             var seq = DOTween.Sequence();
                         seq.Append(mat.DOColor(damageColor, "_BaseColor", 0.2f)).Join(transform.DOShakeScale(0.1f, 1));
                         seq.Append(mat.DOColor(defaultColor, "_BaseColor", 0.2f));            
