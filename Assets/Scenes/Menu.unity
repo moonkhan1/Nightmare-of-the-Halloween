@@ -338,6 +338,22 @@ PrefabInstance:
       propertyPath: m_Name
       value: MenuCanvas
       objectReference: {fileID: 0}
+    - target: {fileID: 3694397601047645068, guid: e65862ff5b1fe05429a67cc70ff4ac46, type: 3}
+      propertyPath: m_text
+      value: Nightmare Of The Halloween
+      objectReference: {fileID: 0}
+    - target: {fileID: 3694397601047645068, guid: e65862ff5b1fe05429a67cc70ff4ac46, type: 3}
+      propertyPath: m_fontSize
+      value: 95.3
+      objectReference: {fileID: 0}
+    - target: {fileID: 3694397601047645068, guid: e65862ff5b1fe05429a67cc70ff4ac46, type: 3}
+      propertyPath: m_margin.w
+      value: -60.303467
+      objectReference: {fileID: 0}
+    - target: {fileID: 3694397601047645069, guid: e65862ff5b1fe05429a67cc70ff4ac46, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 27
+      objectReference: {fileID: 0}
     - target: {fileID: 3694397601292580371, guid: e65862ff5b1fe05429a67cc70ff4ac46, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.size
       value: 0
@@ -436,6 +452,22 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 6341298203144581834, guid: ca6ee9232ccfc8e4cb627b21bce6b870, type: 3}
+      propertyPath: m_ClearFlags
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 6341298203144581834, guid: ca6ee9232ccfc8e4cb627b21bce6b870, type: 3}
+      propertyPath: m_BackGroundColor.b
+      value: 0.16078433
+      objectReference: {fileID: 0}
+    - target: {fileID: 6341298203144581834, guid: ca6ee9232ccfc8e4cb627b21bce6b870, type: 3}
+      propertyPath: m_BackGroundColor.g
+      value: 0.2875797
+      objectReference: {fileID: 0}
+    - target: {fileID: 6341298203144581834, guid: ca6ee9232ccfc8e4cb627b21bce6b870, type: 3}
+      propertyPath: m_BackGroundColor.r
+      value: 0.47058824
+      objectReference: {fileID: 0}
     - target: {fileID: 6341298203144581835, guid: ca6ee9232ccfc8e4cb627b21bce6b870, type: 3}
       propertyPath: m_RootOrder
       value: 0
